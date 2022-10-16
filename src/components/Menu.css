@@ -1,0 +1,56 @@
+.menu{
+    padding: 1rem;
+    background-color: rgb(115, 94, 62);
+    display: flex;
+}
+.menu .logo{
+    width: 10%;
+}
+.logo>img{
+    width: 10rem;
+    object-fit: cover;
+}
+.menu>nav{
+    width: 40%;
+    margin-left: 45%;
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+}
+.menu .linkmenu{
+    color: white;
+    margin: 0 .5rem;
+    text-decoration: none;
+}
+.menu p{
+    color: white;
+}
+
+
+@media only screen and (min-width:576px) {
+    .menu>nav{
+        width: 80%;
+        margin-left: 35%;
+    }
+}
+/* medium */
+@media only screen and (min-width:768px) {
+    .menu>nav{
+        width: 80%;
+        margin-left: 50%;
+    }
+}
+ /* largue */
+@media only screen and (min-width:950px) {
+    .menu>nav{
+        width: 80%;
+        margin-left: 55%;
+    }
+}
+/* Extra largue */
+@media only screen and (min-width:1200px) {
+    .menu>nav{
+        width: 80%;
+        margin-left: 65%;
+    }
+}
