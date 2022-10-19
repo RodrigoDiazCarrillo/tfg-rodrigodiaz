@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/tfg-rodrigodiaz.git/static/css/main.eec3fc94.css",
-    "main.js": "/tfg-rodrigodiaz.git/static/js/main.acbbf465.js",
-    "static/media/418831.jpg": "/tfg-rodrigodiaz.git/static/media/418831.f5b9160fa4d799de1a62.jpg",
-    "static/media/3811818.jpg": "/tfg-rodrigodiaz.git/static/media/3811818.b2652bc230d7339fbf6d.jpg",
-    "static/media/logo-blanco.png": "/tfg-rodrigodiaz.git/static/media/logo-blanco.8f1bf61fe7a47b3e8450.png",
-    "index.html": "/tfg-rodrigodiaz.git/index.html",
-    "main.eec3fc94.css.map": "/tfg-rodrigodiaz.git/static/css/main.eec3fc94.css.map",
-    "main.acbbf465.js.map": "/tfg-rodrigodiaz.git/static/js/main.acbbf465.js.map"
+    "main.css": "/static/css/main.eec3fc94.css",
+    "main.js": "/static/js/main.142893cf.js",
+    "static/media/418831.jpg": "/static/media/418831.f5b9160fa4d799de1a62.jpg",
+    "static/media/3811818.jpg": "/static/media/3811818.b2652bc230d7339fbf6d.jpg",
+    "static/media/logo-blanco.png": "/static/media/logo-blanco.8f1bf61fe7a47b3e8450.png",
+    "index.html": "/index.html",
+    "main.eec3fc94.css.map": "/static/css/main.eec3fc94.css.map",
+    "main.142893cf.js.map": "/static/js/main.142893cf.js.map"
   },
   "entrypoints": [
     "static/css/main.eec3fc94.css",
-    "static/js/main.acbbf465.js"
+    "static/js/main.142893cf.js"
   ]
 }
