@@ -1,4 +1,4 @@
-import { Routes, Route, Router } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import { UserAuthContextProvider } from "./context/userAuthContext";
 import "./App.css";
 import Home from "./pages/Home";
@@ -14,7 +14,6 @@ function App() {
           <UserAuthContextProvider>
             <Routes>
               <Route index element={<Home />} />
-              <Route path="/tfg-rodrigodiaz.git" element={<Home />} />
               <Route path="/store" element={<Store />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
@@ -28,3 +27,4 @@ function App() {
 
 export default App;
 
+ // // "homepage":"https://RodrigoDiazCarrillo.github.io/tfg-rodrigodiaz.git", 
