@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Router } from "react-router-dom";
 import { UserAuthContextProvider } from "./context/userAuthContext";
 import "./App.css";
 import Home from "./pages/Home";
@@ -10,10 +10,11 @@ import About from "./pages/About";
 
 function App() {
   return (
- 
+
           <UserAuthContextProvider>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route index element={<Home />} />
+              <Route path="/tfg-rodrigodiaz.git" element={<Home />} />
               <Route path="/store" element={<Store />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
@@ -21,7 +22,9 @@ function App() {
               <Route path="/about" element={<About />} />
             </Routes>
           </UserAuthContextProvider>
+
   );
 }
 
 export default App;
+
