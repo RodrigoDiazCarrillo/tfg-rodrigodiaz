@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/tfg-rodrigodiaz.git/static/css/main.eec3fc94.css",
+    "main.js": "/tfg-rodrigodiaz.git/static/js/main.cf8d1194.js",
+    "static/media/418831.jpg": "/tfg-rodrigodiaz.git/static/media/418831.f5b9160fa4d799de1a62.jpg",
+    "static/media/3811818.jpg": "/tfg-rodrigodiaz.git/static/media/3811818.b2652bc230d7339fbf6d.jpg",
+    "static/media/logo-blanco.png": "/tfg-rodrigodiaz.git/static/media/logo-blanco.8f1bf61fe7a47b3e8450.png",
+    "index.html": "/tfg-rodrigodiaz.git/index.html",
+    "main.eec3fc94.css.map": "/tfg-rodrigodiaz.git/static/css/main.eec3fc94.css.map",
+    "main.cf8d1194.js.map": "/tfg-rodrigodiaz.git/static/js/main.cf8d1194.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eec3fc94.css",
+    "static/js/main.cf8d1194.js"
+  ]
+}
