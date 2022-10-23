@@ -22,38 +22,31 @@
 }
 .menu .linkmenu{
     color: white;
-    margin: 0 .5rem;
+    margin: 0 1rem;
     text-decoration: none;
+}
+.menu .linkmenu:hover{
+    color: rgb(255, 99, 122);
+    scale: .95;
+    text-shadow: 1px 1px 5px rgb(58, 58, 58);
 }
 .menu p{
     color: white;
 }
-
-
-@media only screen and (min-width:576px) {
-    .menu>nav{
-        width: 80%;
-        margin-left: 35%;
-    }
-}
 /* medium */
 @media only screen and (min-width:768px) {
-    .menu>nav{
-        width: 80%;
-        margin-left: 50%;
+    .menu .logo{
+        margin: 1.2rem 0 .8rem 1rem;
     }
 }
- /* largue */
-@media only screen and (min-width:950px) {
-    .menu>nav{
-        width: 80%;
-        margin-left: 55%;
-    }
-}
-/* Extra largue */
+
 @media only screen and (min-width:1200px) {
+    .logo>img{
+        width: 12rem;
+    }
     .menu>nav{
-        width: 80%;
-        margin-left: 65%;
+        padding: .5rem;
+        font-size: 1.2rem;
     }
 }
+

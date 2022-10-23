@@ -1,0 +1,83 @@
+.woods{
+    background-image: url("../img/418831.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.woods .img1,.woods .img3 {
+    margin: .3rem;
+    float: left;
+    width: 48%;
+    height: 10rem;
+    object-fit: cover;
+    filter: grayscale(0.4);
+}
+.woods .img2 {
+    margin: .3rem;
+    float: right;
+    width: 48%;
+    height: 10rem;
+    object-fit: cover;
+    filter: grayscale(0.4);
+}
+.woods .img4 {
+    padding: 0.3rem;
+    box-sizing: border-box;
+    width: 100%;
+    height: 25%;
+    object-fit: cover;
+    filter: grayscale(0.4);
+}
+
+
+.woods .content p{
+    margin: 0 .5rem;
+    font-weight: 500;
+    color: rgb(0, 83, 86);
+    text-shadow: 1px 1px 5px rgb(105, 105, 105);
+    text-align: justify;
+}
+.woods .content{
+    padding: .5rem 0;
+    width: 90%;
+    margin: 1rem auto;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.woods .content>div{
+    margin: 1rem 0 ;
+}
+@media only screen and (min-width:468px) {
+ 
+}
+@media only screen and (min-width:576px) {
+    .woods .content{
+        width: 80%;
+    }
+}
+/* medium */
+@media only screen and (min-width:768px) {
+    .woods .content{
+        width: 65%;
+    }
+}
+ /* largue */
+@media only screen and (min-width:950px) {
+    .woods .content{
+        width: 55%;
+    }
+}
+/* Extra largue */
+@media only screen and (min-width:1200px) {
+    .woods .content{
+        width: 50%;
+    }
+    .woods .content p{
+        font-size: 1.2rem;
+    }
+}
+@media only screen and (min-width:1400px) {
+}
+@media only screen and (min-width:1700px) {
+
+}
+

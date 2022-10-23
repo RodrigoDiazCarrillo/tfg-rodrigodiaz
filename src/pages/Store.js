@@ -2,6 +2,8 @@ import { useNavigate } from "react-router";
 import { useUserAuth } from "../context/userAuthContext";
 import { useEffect, useState } from "react";
 import "./Store.css";
+import { Menu } from "../components/Menu";
+import { Footer } from "../components/Footer";
 ////////////////////
 import { app } from "../firebase-config";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
@@ -35,6 +37,7 @@ console.log(data);
 
   return (
     <>
+    <Menu/>
        <div >
         Hello Welcome <br />
       </div>
@@ -51,6 +54,7 @@ console.log(data);
     </div>
     ))}
     </section>
+    <Footer/>
     </>
   );
 };
