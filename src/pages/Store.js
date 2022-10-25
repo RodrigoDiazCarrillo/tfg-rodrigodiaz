@@ -4,58 +4,55 @@ import { useEffect, useState } from "react";
 import "./Store.css";
 import { Menu } from "../components/Menu";
 import { Footer } from "../components/Footer";
+
 ////////////////////
-import { app } from "../firebase-config";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-//import ItemDetail from "../ItemDetail";
-import {useParams} from "react-router-dom";
+
 
 
 
 
 const Store = () => {
-  const { logOut, user } = useUserAuth();
   const [data,setData] = useState({})
-  const navigate = useNavigate();
-  const handleLogout = async () => {
-    try {
-      await logOut();
-      navigate("/login");
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-///////////////////////
+
 useEffect(() =>{
     const querydb = getFirestore();
     const queryDoc = doc(querydb, 'productos','maderas');
     getDoc(queryDoc)
     .then(res => setData(res.data()))
+    localStorage.setItem('productos', JSON.stringify(data))
+    // if (JSON.parse(localStorage.getItem('productos')) == null){
+    //   localStorage.setItem('productos', JSON.stringify(data))
+    // }
     
 },[])
-console.log(data);
-
+console.log(JSON.parse(localStorage.getItem('productos')))
   return (
-    <>
+    <section className="store">
     <Menu/>
-       <div >
-        Hello Welcome <br />
-      </div>
-      <div >
-        <button onClick={handleLogout}>
-          Log out
-        </button>
-      </div>
     <section className="products">
-    {Object.entries(data).map(([key, val], i) => (
-    <div className="product-card">
-        <h2>{key}</h2>
-        <img src ={val}/>
-    </div>
-    ))}
+      {
+      Object.entries(data).map(([key, val], i) => (
+        <div className="product-card">
+            <h2>{key}</h2>
+            <img src ={val}/>
+        </div> 
+        ))
+    
+      }
+   
+    
+    
+    
+    
+    
+    
+    
+    
+   
     </section>
     <Footer/>
-    </>
+    </section>
   );
 };
 
