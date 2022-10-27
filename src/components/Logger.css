@@ -1,7 +1,58 @@
+
 .logger .logged-icon, .logger .unlogged-icon{
     margin-right: .5rem;
 }
 
 .logger .unlogged-icon{
     color: rgb(255, 99, 122);
+}
+.logger .usermenu{
+    display: flex;
+    flex-direction: column;
+    display: inline-block;
+    position: relative;
+}
+.logger .logged-menu{
+    display: flex;
+}
+
+.logger .usermenuicon{
+   font-size: 4rem;
+}
+.logger #usermenubtn{
+ padding-left: 1.2rem;
+}
+.logger #usermenubtn:hover{
+    background-color: rgba(0, 107, 111,0.8);
+   }
+.logger .usermenu-content{
+    display: flex;
+    width: 200%;
+    text-align: center;
+    flex-direction: column;
+    font-size: 1rem;
+    color: white;
+    position: absolute;   
+    left: -100%;
+    background-color: rgba(63, 74, 74, 0.7);
+}
+.logger .linkuser{
+    color: white;
+    margin: 0 1rem;
+    font-family: 'Saira Condensed', sans-serif;
+    text-decoration: none;
+}
+.logger .linkuser:hover,.logger .linkuserbtn:hover{
+    color: rgb(255, 99, 122);
+    scale: .95;
+    text-shadow: 1px 1px 5px rgb(58, 58, 58);
+}
+.logger .linkuserbtn{
+    background-color: rgba(46, 46, 46,0);
+    border: 0px;
+    font-size: 1rem;
+    width: 100%;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
 }

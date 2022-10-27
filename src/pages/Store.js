@@ -41,15 +41,6 @@ console.log(JSON.parse(localStorage.getItem('productos')))
     
       }
    
-    
-    
-    
-    
-    
-    
-    
-    
-   
     </section>
     <Footer/>
     </section>

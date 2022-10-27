@@ -1,42 +1,63 @@
 import "./Logger.css";
 import { useUserAuth } from "../context/userAuthContext";
 import { useNavigate } from "react-router";
-import { FaUserAlt,FaUserAltSlash } from "react-icons/fa";
-
+import { FaUserAlt, FaUserAltSlash } from "react-icons/fa";
+import { AiOutlineMenu } from "react-icons/ai";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Logger = () => {
-    const navigate = useNavigate();
-    const { logOut, user } = useUserAuth();
-    const handleLogin = async () => {
-        try {
-          await logOut();
-          navigate("/login");
-        } catch (error) {
-          console.log(error.message);
-        }
-      };
-      const handleLogout = async () => {
-        try {
-          await logOut();
-         
-        } catch (error) {
-          console.log(error.message);
-        }
-      };
+  const navigate = useNavigate();
+  const { logOut, user } = useUserAuth();
+  const handleLogin = async () => {
+    try {
+      await logOut();
+      navigate("/login");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  const handleLogout = async () => {
+    try {
+      await logOut();
+
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const [isShown, setIsShown] = useState(false);
+
+  const handleClick = event => {
+    // Toggle shown state
+    setIsShown(current => !current);
+
+  };
   return (
     <section className="logger">
-      {user ? 
-        <button className="button-3" onClick={handleLogout}>
-        <FaUserAlt className="logged-icon" />Log out
-      </button>
-      :
-      <button className="button-3" onClick={handleLogin}>
-        <FaUserAltSlash className="unlogged-icon" />Log in
-      </button>
+      {user ?
+        <div className="logged-menu">
+              <div className="usermenu">
+            <button className="button-3" id="usermenubtn" onClick={handleClick}> 
+            <FaUserAlt className="logged-icon" />
+             </button>
+            {isShown && (
+              <div className="usermenu-content">
+                <Link className={"linkuser"}to="/">Mi usuario</Link>
+                <Link className={"linkuser"}to="/">Ver cesta</Link>
+                <button className={"linkuserbtn"} onClick={handleLogout}>Cerrar sesión</button>
+              </div>
+            )}
+            </div>
+        </div>
+        :
+        <button className="button-3" onClick={handleLogin}>
+          <FaUserAltSlash className="unlogged-icon" />Log in
+        </button>
 
-        
 
-      
+
+
       }
     </section>
   );
