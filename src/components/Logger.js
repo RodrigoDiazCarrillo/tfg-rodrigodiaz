@@ -2,7 +2,6 @@ import "./Logger.css";
 import { useUserAuth } from "../context/userAuthContext";
 import { useNavigate } from "react-router";
 import { FaUserAlt, FaUserAltSlash } from "react-icons/fa";
-import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -20,7 +19,7 @@ export const Logger = () => {
   const handleLogout = async () => {
     try {
       await logOut();
-
+      navigate("/store");
     } catch (error) {
       console.log(error.message);
     }
@@ -31,6 +30,7 @@ export const Logger = () => {
   const handleClick = event => {
     // Toggle shown state
     setIsShown(current => !current);
+
 
   };
   return (
@@ -43,7 +43,7 @@ export const Logger = () => {
              </button>
             {isShown && (
               <div className="usermenu-content">
-                <Link className={"linkuser"}to="/">Mi usuario</Link>
+                <Link className={"linkuser"}to="/user">Mi usuario</Link>
                 <Link className={"linkuser"}to="/">Ver cesta</Link>
                 <button className={"linkuserbtn"} onClick={handleLogout}>Cerrar sesión</button>
               </div>

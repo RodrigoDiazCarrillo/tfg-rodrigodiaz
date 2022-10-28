@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "./Store.css";
 import { Menu } from "../components/Menu";
 import { Footer } from "../components/Footer";
-
+import { auth } from "../firebase-config";
 ////////////////////
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
@@ -26,7 +26,7 @@ useEffect(() =>{
     // }
     
 },[])
-console.log(JSON.parse(localStorage.getItem('productos')))
+console.log(auth.currentUser)
   return (
     <section className="store">
     <Menu/>

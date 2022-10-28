@@ -4,23 +4,28 @@ import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useUserAuth } from "../context/userAuthContext";
 
+
+
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  
   const [password, setPassword] = useState("");
   const { signUp } = useUserAuth();
   let navigate = useNavigate();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      await signUp(email, password);
+      await signUp(email, password );
       navigate("/store");
     } catch (err) {
       setError(err.message);
     }
   };
+  
 
   return (
     <>
@@ -43,6 +48,9 @@ const Signup = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
+
+          
+
 
           <div className="d-grid gap-2">
             <Button variant="primary" type="Submit">

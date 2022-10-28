@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import Store from "./pages/Store";
 import Woods from "./pages/Woods";
 import About from "./pages/About";
+import Userboard from "./pages/Userboard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/woods" element={<Woods />} />
               <Route path="/about" element={<About />} />
+              <Route path="/user" element={<Userboard/>} />
             </Routes>
           </UserAuthContextProvider>
 

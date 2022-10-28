@@ -1,0 +1,44 @@
+.userboard{
+
+        background-image: url("../img/64111.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+
+}
+.userboard .client{
+    border: 2px solid rgb(255, 99, 122);
+    margin: 3rem 2rem;
+}
+.userboard .client>div{
+    display: flex;
+}
+.userboard .client>div>p{
+    margin: 1rem ;
+}
+.userboard .clientdata{
+    display: flex;
+    margin: 0 .5rem;
+}
+.userboard .userinfo{
+
+    width: 80%;
+    padding: .5rem;
+    box-sizing: border-box;
+    margin: 10vw auto 25vw auto;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+.userboard .userinfo h2{
+margin: 2rem 2rem
+}
+.userboard .modificar{
+    margin: 1rem 2rem
+}
+.userboard .modificar>form{
+    margin: 2rem 0;
+}
+.userboard .modificar>form>input{
+    border: 2px solid rgb(255, 99, 122);
+    background-color: rgba(255, 255, 255, 0);
+
+}
