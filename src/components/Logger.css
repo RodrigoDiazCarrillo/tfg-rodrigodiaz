@@ -20,7 +20,9 @@
    font-size: 4rem;
 }
 .logger #usermenubtn{
- padding-left: 1.2rem;
+ /* padding-left: 1.2rem; */
+ display: flex;
+ justify-content: right;
 }
 .logger #usermenubtn:hover{
     background-color: rgba(0, 107, 111,0.8);

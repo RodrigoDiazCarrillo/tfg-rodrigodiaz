@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Alert } from "react-bootstrap";
-import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../context/userAuthContext";
+import { AiFillHome } from "react-icons/ai";
+import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -34,44 +34,44 @@ const Login = () => {
 
   return (
     <>
-      <div className="p-4 box">
-        <h2 className="mb-3">Firebase Auth Login</h2>
-        {error && <Alert variant="danger">{error}</Alert>}
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control
+      <section className="login">
+        <div className="authcard">
+          <h2 >Iniciar sesión</h2>
+          {error && <p className="error">{error}</p>}
+          <form onSubmit={handleSubmit}>
+            <input
               type="email"
-              placeholder="Email address"
+              placeholder="Email"
+              autoComplete="off"
               onChange={(e) => setEmail(e.target.value)}
             />
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control
+            <input
               type="password"
               placeholder="Password"
+              autoComplete="off"
               onChange={(e) => setPassword(e.target.value)}
             />
-          </Form.Group>
 
-          <div className="d-grid gap-2">
-            <Button variant="primary" type="Submit">
-              Log In
-            </Button>
-          </div>
-        </Form>
-        <hr />
-        <div>
+            <button className="button-3" type="Submit">
+              Entrar
+            </button>
+
+          </form>
+          <hr />
+
           <GoogleButton
             className="g-btn"
-            type="dark"
+            type="light"
             onClick={handleGoogleSignIn}
           />
+          <div>
+            Don't have an account? <Link to="/signup">Sign up</Link>
+          </div>
+          <div className="linkhome">
+            <Link to="/"><AiFillHome /></Link>
+          </div>
         </div>
-      </div>
-      <div className="p-4 box mt-3 text-center">
-        Don't have an account? <Link to="/signup">Sign up</Link>
-      </div>
+      </section>
     </>
   );
 };

@@ -96,6 +96,9 @@ button{
   transform: rotate(1deg);
   scale: 1.01;
 }
+.button-3:hover{
+ color:rgb(255, 99, 122);
+}
 .button-1:hover:after,.button-2:hover:after  {
   border: 2px solid rgb(255, 99, 122);
   text-decoration: none;

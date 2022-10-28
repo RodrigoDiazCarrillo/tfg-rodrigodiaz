@@ -103,6 +103,7 @@ const Userboard = () => {
         </button>
         {isShown && (
           <form onSubmit={register}>
+            <div>
             <input
               placeholder="Nombre"
               autoComplete="off"
@@ -157,9 +158,10 @@ const Userboard = () => {
               type="text"
               onChange={(e) => setState(e.target.value)}
             />
-            <div className="button-container">
-              <input type="submit" name="Sign Up" />
             </div>
+            <button className="button-3" type="Submit">
+                Aceptar
+              </button>
           </form>
         )}
         </div>

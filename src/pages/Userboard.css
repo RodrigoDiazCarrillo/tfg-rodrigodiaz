@@ -34,11 +34,27 @@ margin: 2rem 2rem
 .userboard .modificar{
     margin: 1rem 2rem
 }
+.userboard form>div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
 .userboard .modificar>form{
     margin: 2rem 0;
 }
 .userboard .modificar>form>input{
     border: 2px solid rgb(255, 99, 122);
     background-color: rgba(255, 255, 255, 0);
-
+}
+.userboard input{
+    margin: 1rem 0;
+    border: 2px solid rgb(255, 99, 122);
+    background-color: rgba(255, 255, 255, 0);
+    line-height: 2rem;
+    font-size: 1rem;
+}
+.userboard input:focus{
+    box-shadow: 60px -16px teal;
+    border-style: none;
+    box-shadow: 4px 3px 5px 0px rgba(255,99,122,.8);
 }

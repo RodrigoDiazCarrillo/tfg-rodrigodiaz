@@ -19,14 +19,12 @@ useEffect(() =>{
     const querydb = getFirestore();
     const queryDoc = doc(querydb, 'productos','maderas');
     getDoc(queryDoc)
-    .then(res => setData(res.data()))
+    .then(res => setData(res.data(),  console.log(JSON.stringify(data))))
     localStorage.setItem('productos', JSON.stringify(data))
-    // if (JSON.parse(localStorage.getItem('productos')) == null){
-    //   localStorage.setItem('productos', JSON.stringify(data))
-    // }
+
     
 },[])
-console.log(auth.currentUser)
+
   return (
     <section className="store">
     <Menu/>
