@@ -7,7 +7,7 @@ import { Footer } from "../components/Footer";
 import { auth } from "../firebase-config";
 ////////////////////
 import { getFirestore,getDocs,collection,doc,getDoc} from "firebase/firestore";
-import { get } from "firebase/database";
+import { Link } from "react-router-dom";
 
 
 
@@ -16,6 +16,7 @@ import { get } from "firebase/database";
 const Store = () => {
  const [data,setData] = useState([])
  const [dat,setDat] = useState([])
+
 
 // useEffect(() =>{
 //     const querydb = getFirestore();
@@ -98,14 +99,17 @@ useEffect(() => {
        
        {data != undefined ?
       dat.map((d) =>  
+      <Link className={"linkproduct"}to={d.url}>
       <div className="product-card">
-        <p>{d.tipo}</p>   
-        <p>{d.marca}</p>   
+        <h2> {d.marca} &nbsp;{d.modelo} </h2>   
         <img src ={d.imagen}/>
-         <p>{d.modelo}</p>   
-         <p>{d.descripcion}</p>   
+        
+         {/* <p>{d.descripcion}</p>    */}
          <p>{d.precio}</p>  
+         
          </div>
+         </Link>
+
       )
       :
 

@@ -8,6 +8,8 @@ import Store from "./pages/Store";
 import Woods from "./pages/Woods";
 import About from "./pages/About";
 import Userboard from "./pages/Userboard";
+import Savarez_corum_tm from "./pages/product-page/Savarez-corum-tm";
+import Daddario_carbono_ta from "./pages/product-page/Daddario-carbono-ta";
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
               <Route path="/woods" element={<Woods />} />
               <Route path="/about" element={<About />} />
               <Route path="/user" element={<Userboard/>} />
+              {/* Product pages */}
+              <Route path="/savarez-corum-tm" element={<Savarez_corum_tm/>} />
+              <Route path="/daddario-carbono-ta" element={<Daddario_carbono_ta/>} />
             </Routes>
           </UserAuthContextProvider>
 
