@@ -15,7 +15,15 @@
 
 .product-card{
     width: 23%;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255,.5);
 }
 .product-card>img{
     width: 100%;
+}
+.product-card>h2{
+    margin: 0;
+}
+.cargando{
+    height: 100vh;
 }
