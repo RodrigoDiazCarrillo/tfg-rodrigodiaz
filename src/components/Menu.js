@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { useState } from "react";
 import { Logger } from "./Logger";
-export const Menu = () => {
+export function Menu () {
 
   return (
     <section className="menu">

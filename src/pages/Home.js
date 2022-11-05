@@ -6,7 +6,7 @@ import { Link} from "react-router-dom";
 import img1 from "../img/418831.jpg";
 import img2 from "../img/5022456.jpg";
 
-const Home = () => {
+function Home (){
 
   return (
 

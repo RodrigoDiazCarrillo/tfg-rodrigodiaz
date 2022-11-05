@@ -13,7 +13,7 @@ import { getFirestore, doc, getDoc, addDoc, setDoc, updateDoc, collection } from
 
 
 
-const Userboard = () => {
+function Userboard () {
   const [cliente, setCliente] = useState({});
   const [name, setName] = useState("");
   const [primer, setPrimer] = useState("");

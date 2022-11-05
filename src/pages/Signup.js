@@ -4,9 +4,9 @@ import { useUserAuth } from "../context/userAuthContext";
 import { AiFillHome } from "react-icons/ai";
 import "./Signup.css";
 import { auth, db } from "../firebase-config";
-import { getFirestore, doc, getDoc, addDoc, setDoc, updateDoc, collection } from "firebase/firestore";
+import { doc, setDoc} from "firebase/firestore";
 
-const Signup = () => {
+function Signup () {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
@@ -68,6 +68,7 @@ const Signup = () => {
             <h2 >Iniciar sesión</h2>
             {error && <p className="error">{error}</p>}
             <form onSubmit={register}>
+              <div>
               <input
                 type="email"
                 placeholder="Email"
@@ -80,7 +81,9 @@ const Signup = () => {
                 autoComplete="off"
                 onChange={(e) => setPassword(e.target.value)}
               />
-     <input
+              </div>
+              <div>
+            <input
               placeholder="Nombre"
               autoComplete="off"
               type="text"
@@ -92,6 +95,8 @@ const Signup = () => {
               type="text"
               onChange={(e) => setPrimer(e.target.value)}
             />
+            </div>
+            <div>
                <input
               placeholder="Segundo Apellido"
               autoComplete="off"
@@ -104,6 +109,8 @@ const Signup = () => {
               type="text"
               onChange={(e) => setNif(e.target.value)}
             />
+            </div>
+            <div>
              <input
               placeholder="Teléfono"
               autoComplete="off"
@@ -116,6 +123,8 @@ const Signup = () => {
               type="text"
               onChange={(e) => setStreet(e.target.value)}
             />
+            </div>
+            <div>
              <input
               placeholder="Número"
               autoComplete="off"
@@ -128,12 +137,15 @@ const Signup = () => {
               type="text"
               onChange={(e) => setCity(e.target.value)}
             />
+             </div>
+             <div>
              <input
               placeholder="Provincia"
               autoComplete="off"
               type="text"
               onChange={(e) => setState(e.target.value)}
             />
+           </div>
               <button className="button-3" type="Submit">
                 Entrar
               </button>

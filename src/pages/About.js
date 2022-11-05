@@ -7,7 +7,7 @@ import img2 from "../img/3811818.jpg";
 import img3 from "../img/5089117.jpg";
 import img4 from "../img/258283.jpg";
 
-const About = () => {
+function About () {
 
   return (
 

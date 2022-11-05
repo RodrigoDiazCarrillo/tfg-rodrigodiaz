@@ -5,7 +5,7 @@ import { useUserAuth } from "../context/userAuthContext";
 import { AiFillHome } from "react-icons/ai";
 import "./Login.css";
 
-const Login = () => {
+function Login () {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

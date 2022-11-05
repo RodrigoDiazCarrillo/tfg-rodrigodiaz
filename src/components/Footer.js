@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AiFillFacebook, AiFillTwitterCircle, AiFillInstagram } from "react-icons/ai";
 
 
-export const Footer = () => {
+export function Footer ()  {
   return (
     <section className="footer">
       <div className="logo-footer"><img src={img1} alt="" className="pic" /></div>

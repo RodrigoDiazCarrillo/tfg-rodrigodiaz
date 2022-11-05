@@ -25,7 +25,11 @@
 }
 .signup form{
     display: flex;
-    flex-direction: column;
+ flex-direction: column;
+}
+.signup form>div{
+    display: flex;
+ justify-content: space-around;
 }
 .signup button{
     width: 50%;
@@ -33,7 +37,8 @@
     font-size: 1.2rem;
 }
 .signup input{
-    margin: 1rem;
+    width: 40%;
+    margin: 1rem 0;
     border: 2px solid rgb(255, 99, 122);
     background-color: rgba(255, 255, 255, 0);
     line-height: 2rem;

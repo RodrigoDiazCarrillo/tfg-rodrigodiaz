@@ -7,7 +7,7 @@ import img2 from "../img/3657423.jpg";
 import img3 from "../img/5089153.jpg";
 import img4 from "../img/12278576.jpg";
 
-const Woods = () => {
+function Woods () {
 
   return (
 
