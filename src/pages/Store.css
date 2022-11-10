@@ -14,24 +14,25 @@
 }
 
 .product-card{
+    width: 33%;
     position: relative;
 }
-.product-card:hover{
+.product-card>div img:hover{
     transform: scale(0.99);
     cursor: pointer;
 }
-.product-card>img{
+.product-card>div img{
 
     width: 100%;
 }
-.product-card>h2{
+.product-card>div h2{
     text-align: center;
     font-size: 1.3rem;
     margin: 0;
     color: rgb(255, 255, 255);
     text-shadow: 1px 1px 5px rgb(192 192 192);  
 }
-.product-card>p{
+.product-card>div p{
     margin: 0 auto;
     font-weight: 600;
     text-align: center;
@@ -39,7 +40,7 @@
 }
 .products .linkproduct{
     font-size: 1.1rem;
-    width: 33%;
+    transform: scale(0.99);
     text-decoration: none;
     color: rgb(255, 99, 122);
     text-shadow: 1px 1px 7px rgb(148, 148, 148);  
