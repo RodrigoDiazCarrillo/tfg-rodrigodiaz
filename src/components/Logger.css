@@ -1,11 +1,10 @@
 
-.logger .logged-icon, .logger .unlogged-icon{
-    margin-right: .5rem;
-}
+
 
 .logger .unlogged-icon{
     color: rgb(255, 99, 122);
 }
+
 .logger .usermenu{
     display: flex;
     flex-direction: column;

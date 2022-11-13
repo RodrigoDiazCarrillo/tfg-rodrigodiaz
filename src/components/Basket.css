@@ -1,0 +1,20 @@
+.basket {
+  display: flex;
+  align-items: center;
+  padding: .5rem;
+}
+.basket button{
+       
+        display: flex;
+        padding: .4rem .4rem;
+}
+.basket p{
+ 
+    margin: 0 0 0 .3rem;
+    line-height: .8rem;
+    
+}
+.basket .basket-icon {
+    margin: 0 auto;
+    padding: 0;
+}

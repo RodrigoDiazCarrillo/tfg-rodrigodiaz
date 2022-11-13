@@ -4,21 +4,16 @@ import { useEffect, useState } from "react";
 import "./Store.css";
 import { Menu } from "../components/Menu";
 import { Footer } from "../components/Footer";
+
 import { auth } from "../firebase-config";
 ////////////////////
 import { getFirestore, getDocs, collection, doc, getDoc, query, where } from "firebase/firestore";
 import { Link } from "react-router-dom";
 
-
-
-
-
 function Store() {
   const [data, setData] = useState([])
   const [dat, setDat] = useState([])
   const [basket, setBasket] = useState([])
-
-
 
 
   // useEffect(() =>{
@@ -49,16 +44,41 @@ function Store() {
   };
   useEffect(() => {
     prod();
-
+    if (localStorage.getItem('basket') != null){
+      setBasket(JSON.parse(localStorage.getItem('basket')))
+    }
+    
   }, [])
   useEffect(() => {
     console.log(basket);
+    localStorage.setItem('basket', JSON.stringify(basket))
+    console.log("localStorage",JSON.parse(localStorage.getItem('basket')));
   }, [basket])
 
+  
+  const addBasket = (e) => {
+   
+  
+  //  if ( basket.length > 0) {
+      for (var i = 0; i < basket.length; i++) {
+        if (basket[i].find((element) => element === dat[e.target.value].id)) {
+          return console.log("ya existe");
+        }
+      }
+
+  //  }
+  
+ //  else{
+    setBasket(current => [...current, [e.target.value, dat[e.target.value].precio, dat[e.target.value].marca, dat[e.target.value].id]])
+ // }
+
+    
+  }
 
   return (
     <section className="store">
       <Menu />
+   
       <section className="products">
 
         {data != undefined ?
@@ -72,9 +92,7 @@ function Store() {
                 </Link>
 
               </div>
-              <button value={index} onClick={(e) =>
-                setBasket(current => [...current, [e.target.value, dat[e.target.value].precio, dat[e.target.value].marca]])
-
+              <button value={index} onClick={addBasket       
               }>Añadir a la cesta</button>
             </div>
           )
