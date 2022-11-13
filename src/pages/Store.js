@@ -15,7 +15,6 @@ function Store() {
   const [dat, setDat] = useState([])
   const [basket, setBasket] = useState([])
 
-
   // useEffect(() =>{
   //     const querydb = getFirestore();
   //     const queryDoc = doc(querydb, 'productos','maderas');
@@ -62,7 +61,7 @@ function Store() {
   //  if ( basket.length > 0) {
       for (var i = 0; i < basket.length; i++) {
         if (basket[i].find((element) => element === dat[e.target.value].id)) {
-          return console.log("ya existe");
+          return alert("El producto seleccionado ya está añadido");
         }
       }
 
@@ -110,4 +109,5 @@ function Store() {
 };
 
 export default Store;
+
 
