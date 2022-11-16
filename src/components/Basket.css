@@ -3,18 +3,74 @@
   align-items: center;
   padding: .5rem;
 }
-.basket button{
-       
+.basket button{ 
         display: flex;
-        padding: .4rem .4rem;
+        padding: 0 .5rem 0 .4rem;
 }
-.basket p{
- 
-    margin: 0 0 0 .3rem;
-    line-height: .8rem;
-    
-}
+
 .basket .basket-icon {
     margin: 0 auto;
     padding: 0;
+}
+.basket .basketloaded-icon {
+  margin: 0 auto;
+  padding: 0;
+  color:rgb(255, 99, 122);
+}
+
+#dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+  padding: 0 .5rem 0 .4rem;
+}
+
+.dropdown-content {
+  padding: .5rem;
+  display: none;
+  position: absolute;
+  top: 1.7rem;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content>button{
+  margin: .5rem auto;
+}
+.dropdown-content .line{
+  border: solid .5px rgb(255, 255, 255);
+}
+
+#dropdown:hover .dropdown-content {
+  display: block;
+}
+.basket .basket-product-prev{
+  display: flex;
+  margin: .2rem 0;
+ 
+}
+.basket .basket-product-prev>img{
+  width:35%;
+  object-fit: contain;  
+}
+.basket .basket-product-prev .precio{
+  color:black;
+  font-weight: 600;
+}
+.basket .basket-product-prev h3{
+  font-weight: 400;
+ 
+}
+.basket .basket-product-prev p, .basket .basket-product-prev h3{
+  font-size: .7rem;
+  margin-left: .5rem;
+  line-height:.2rem;
+  text-align: left;
+  color:rgb(0, 0, 0);
+}
+.basket hr{
+  border: .1px solid rgb(0, 0, 0);
+  width: 90%;
 }

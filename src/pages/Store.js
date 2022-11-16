@@ -68,7 +68,9 @@ function Store() {
   //  }
   
  //  else{
-    setBasket(current => [...current, [e.target.value, dat[e.target.value].precio, dat[e.target.value].marca, dat[e.target.value].id]])
+    setBasket(current => [...current, [
+      e.target.value, 1, dat[e.target.value].precio, dat[e.target.value].imagen, 
+      dat[e.target.value].categoria, dat[e.target.value].marca, dat[e.target.value].modelo, dat[e.target.value].id]])
  // }
 
     
