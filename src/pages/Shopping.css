@@ -1,0 +1,73 @@
+.shopping{
+    padding: 1rem;
+    box-sizing: border-box;
+    height: 100vh;
+}
+.product-containter .buttons{
+   display: flex;
+   justify-content: space-between;
+}
+
+.shopping .content>div{
+    display: flex;
+}
+.shopping .detail{
+    width: 27%;
+    margin-left: 3%;
+    border: solid 1px rgb(204, 204, 204);
+    padding: .5rem;
+    box-sizing: border-box;
+    border-radius: .5rem;
+    height: auto;
+
+}
+.shopping .product-containter{
+    width: 70%;
+     
+}
+.shopping .shopping-product-prev>div{
+    line-height: 0;
+
+}
+.shopping .shopping-product-prev #prod-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25%;    
+ }
+ .shopping .shopping-product-prev #prod-buttons>button{
+    width: 30%;
+    margin: .2rem auto;    
+ }
+ .shopping .shopping-product-prev #prod-buttons input{
+    border-radius: 0;
+    border: solid 1px gray;
+    width: 10%;    
+ }
+.shopping .shopping-product-prev #moreless{
+   display: flex;
+   justify-content: center;
+}
+.shopping .shopping-product-prev{
+    display: flex;
+    height: 25%;
+    border: solid 1px rgb(204, 204, 204);
+    padding: .5rem;
+    box-sizing: border-box;
+    border-radius: .5rem;
+    margin-bottom: 1rem; 
+    overflow: hidden;
+  }
+
+.shopping .shopping-product-prev>img{
+    width:25%;
+    object-fit: contain; 
+
+  }
+  .shopping .shopping-product-prev>div{
+    width: 50%;
+  }
+  #save-cont{
+    width: 80%;
+    margin: 1rem 10%;
+  }

@@ -3,10 +3,6 @@
   align-items: center;
   padding: .5rem;
 }
-.basket button{ 
-        display: flex;
-        padding: 0 .5rem 0 .4rem;
-}
 
 .basket .basket-icon {
     margin: 0 auto;
