@@ -35,19 +35,23 @@ function Store() {
         documents.forEach(doc => {
           setData(current => [...current, doc.id])
           setDat(current => [...current, doc.data()])
+         
         })
       }
     } catch (error) {
       console.log("error");
     }
   };
+  //Refresca el usestate basket al volver a la página
   useEffect(() => {
     prod();
     if (localStorage.getItem('basket') != null){
       setBasket(JSON.parse(localStorage.getItem('basket')))
     }
-    
+   
   }, [])
+
+
   useEffect(() => {
     console.log(basket);
     localStorage.setItem('basket', JSON.stringify(basket))
@@ -56,29 +60,21 @@ function Store() {
 
   
   const addBasket = (e) => {
-   
-  
-  //  if ( basket.length > 0) {
+
       for (var i = 0; i < basket.length; i++) {
         if (basket[i].find((element) => element === dat[e.target.value].id)) {
           return alert("El producto seleccionado ya está añadido");
         }
       }
-
-  //  }
-  
- //  else{
     setBasket(current => [...current, [
       e.target.value, 1, dat[e.target.value].precio, dat[e.target.value].imagen, 
       dat[e.target.value].categoria, dat[e.target.value].marca, dat[e.target.value].modelo, dat[e.target.value].id]])
- // }
 
-    
   }
 
   return (
     <section className="store">
-      <Menu />
+      {<Menu /> }
    
       <section className="products">
 

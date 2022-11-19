@@ -17,7 +17,7 @@
     align-items: center;
     width: 50%;
 }
-.logo>img{
+.menu .logo>img{
     width: 10rem;
     object-fit: cover;
 }

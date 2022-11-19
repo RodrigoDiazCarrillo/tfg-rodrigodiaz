@@ -3,6 +3,35 @@
     box-sizing: border-box;
     height: 100vh;
 }
+.shopping header hr{
+  margin-top: 1rem;
+}
+.shopping .logo{
+  display: flex;
+}
+.shopping .logo>img{
+  width: 20%;
+  object-fit:scale-down
+}
+.shopping-route{
+  display: flex;
+  border-radius: .5rem;
+}
+.shopping-route>.current{
+color:white;
+  background-color: rgb(0, 107, 111);
+}
+.shopping-route>div{
+  color: rgb(99, 99, 99);
+  background-color: rgb(153, 153, 153);
+  border-radius: .5rem;
+  padding: .5rem;
+  margin: 0 .2rem;
+}
+.shopping-route h3{
+  text-align: center;
+  margin: 0 ;
+}
 .product-containter .buttons{
    display: flex;
    justify-content: space-between;
@@ -26,7 +55,7 @@
      
 }
 .shopping .shopping-product-prev>div{
-    line-height: 0;
+  line-height: 0;
 
 }
 .shopping .shopping-product-prev #prod-buttons{
@@ -39,14 +68,21 @@
     width: 30%;
     margin: .2rem auto;    
  }
- .shopping .shopping-product-prev #prod-buttons input{
+ .shopping .shopping-product-prev #prod-buttons .ctd{
     border-radius: 0;
     border: solid 1px gray;
-    width: 10%;    
+    line-height: normal;
+    margin: 0;
+    padding: .2rem .5rem;
+    
  }
 .shopping .shopping-product-prev #moreless{
    display: flex;
    justify-content: center;
+   height: 2rem;
+}
+.shopping .shopping-product-prev #moreless>button{
+ line-height: normal;
 }
 .shopping .shopping-product-prev{
     display: flex;

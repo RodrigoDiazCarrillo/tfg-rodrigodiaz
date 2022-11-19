@@ -2,14 +2,11 @@ import { useEffect, useState } from "react";
 import "./Shopping.css";
 import { Link,useNavigate } from "react-router-dom";
 import { RiDeleteBin6Line} from "react-icons/ri";
-import { useUserAuth } from "../context/userAuthContext";
 import img1 from "../img/logo-blanco.png";
 
-function Shopping() {
-  const { user } = useUserAuth();
+function Payment() {
     const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')))
     let navigate = useNavigate();
-
   const del = (e) => {
     e.preventDefault();
     localStorage.setItem('basket', JSON.stringify([]))
@@ -34,42 +31,34 @@ function Shopping() {
     console.log(modify,JSON.parse(localStorage.getItem('basket')));
     window.location.href = window.location.href
     }
-
   }
   const deleteProduct = (e) => {
     let values = JSON.parse(localStorage.getItem('basket'))
     let newvalue = values.filter((value)=>value[0] == e.target.value)
     setBasket(newvalue)
-   
     console.log(basket);
     }
-    useEffect(() => {
-      console.log(basket);
-      localStorage.setItem('basket', JSON.stringify(basket))
-      console.log("localStorage",JSON.parse(localStorage.getItem('basket')));
-    }, [basket])
-
-  const continuar = (e) => {
-      user ? navigate("/cart/address") : navigate("/login")
+    const continuar = (e) => {
+      navigate("/store");
       }
+  
   return (
-
     <section className="shopping">
-      <header>
-      <div className="logo">
+       <header>
+       <div className="logo">
         <img src={img1} alt="" className="pic" />
-      <div className="shopping-route">
+        <div className="shopping-route">
         <div className="current"><h3>1</h3><h3>Cesta</h3></div>
-        <div><h3>2</h3><h3>Dirección de envío</h3></div>
-        <div><h3>3</h3><h3>Opciones de entrega</h3></div>
-        <div><h3>4</h3><h3>Método de pago</h3></div>
+        <div className="current"><h3>2</h3><h3>Dirección de envío</h3></div>
+        <div className="current"><h3>3</h3><h3>Opciones de entrega</h3></div>
+        <div className="current"> <h3>4</h3><h3>Método de pago</h3></div>
       </div>
       </div>
         
         <hr></hr>
       </header>
         <section className="content">
-        <h2>Mi cesta</h2>
+        <h2>Método de pago</h2>
         <h3>{basket.length} artículos</h3>
         <div>
         <div className="product-containter">
@@ -120,6 +109,5 @@ function Shopping() {
   );
 };
 
-export default Shopping;
-
+export default Payment;
 

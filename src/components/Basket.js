@@ -46,7 +46,7 @@ export function Basket () {
           <p >Su cesta está vacía</p>
         }
         {basket != 0?
-        <Link className={"linkmenu"}to="/shopping">
+        <Link className={"linkmenu"}to="/cart/shopping">
         <button className="button-3">Ver cesta</button>
         </Link>
         :
