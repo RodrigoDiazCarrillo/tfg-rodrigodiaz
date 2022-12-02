@@ -60,9 +60,9 @@ function Store() {
   useEffect(()=>{
     let total =0;
     for (let i=0; i<basket.length; i++){
-      total = total+basket[i][2]
+      total = total+basket[i][2]*basket[i][1]
     }
-    localStorage.setItem('total', JSON.stringify(total))
+    localStorage.setItem('total', JSON.stringify(total.toFixed(2)))
     console.log("total",JSON.parse(localStorage.getItem('total')));
   })
   

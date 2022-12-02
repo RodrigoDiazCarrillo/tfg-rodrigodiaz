@@ -1,111 +1,186 @@
 import { useEffect, useState } from "react";
-import "./Shopping.css";
-import { Link,useNavigate } from "react-router-dom";
-import { RiDeleteBin6Line} from "react-icons/ri";
+import "./Address.css";
+import { Link, useNavigate } from "react-router-dom";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import img1 from "../img/logo-blanco.png";
+import { useUserAuth } from "../context/userAuthContext";
+import { auth, db } from "../firebase-config";
+import { getFirestore, doc, getDoc, addDoc, setDoc, updateDoc, collection } from "firebase/firestore";
 
 function Shipping() {
-    const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')))
-    let navigate = useNavigate();
-  const del = (e) => {
+  const [cliente, setCliente] = useState({});
+  const [name, setName] = useState("");
+  const [primer, setPrimer] = useState("");
+  const [segundo, setSegundo] = useState("");
+  const [nif, setNif] = useState("");
+  const [phone, setPhone] = useState("");
+  const [street, setStreet] = useState("");
+  const [num, setNum] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const { user } = useUserAuth();
+  const [isShown, setIsShown] = useState(false);
+  let navigate = useNavigate();
+
+  const register = async (e) => {
     e.preventDefault();
-    localStorage.setItem('basket', JSON.stringify([]))
-    navigate("/store");
-  }
-  const more = (e) => {
-    let modify = basket
-    let value = basket[e.target.value][1]
-    modify[e.target.value][1]=value+1
-    setBasket(modify)
-    localStorage.setItem('basket', JSON.stringify(basket))
-    console.log(modify,JSON.parse(localStorage.getItem('basket')));
-    window.location.href = window.location.href
-  }
-  const less = (e) => {
-    let modify = basket
-    let value = basket[e.target.value][1]
-    if (modify[e.target.value][1]>1){
-      modify[e.target.value][1]=value-1
-      setBasket(modify)
-    localStorage.setItem('basket', JSON.stringify(basket))
-    console.log(modify,JSON.parse(localStorage.getItem('basket')));
-    window.location.href = window.location.href
+
+    try {
+      await updateDoc(doc(db, "clientes", user.email), {
+        Nombre: name,
+        PrimerA: primer,
+        SegundoA: segundo,
+        NIF: nif,
+        Teléfono: phone,
+        Dirección: street,
+        Número: num,
+        Ciudad: city,
+        Provincia: state
+      });
+      setIsShown(current => !current);
+      alert("Datos correctamente modificados")
+
+    } catch (err) {
+      console.log(err.message);
     }
+
+  };
+
+
+  useEffect(() => {
+    const querydb = getFirestore();
+    const queryDoc = doc(querydb, 'clientes', user.email)
+    getDoc(queryDoc)
+      .then(res => setCliente(res.data()))
+  }, [register])
+  const handleClick = event => {
+    // Toggle shown state
+    setIsShown(current => !current);
+  };
+  const continuar = (e) => {
+    navigate("/cart/shipping");
   }
-  const deleteProduct = (e) => {
-    let values = JSON.parse(localStorage.getItem('basket'))
-    let newvalue = values.filter((value)=>value[0] == e.target.value)
-    setBasket(newvalue)
-    console.log(basket);
-    }
-    const continuar = (e) => {
-      navigate("/cart/shipping");
-      }
-  
+
   return (
     <section className="shopping">
-       <header>
-      <div className="logo">
-        <img src={img1} alt="" className="pic" />
+      <header>
+        <div className="logo">
+          <img src={img1} alt="" className="pic" />
         </div>
         <div className="shopping-route">
-        <div className="current"><p>1</p><h3>Cesta</h3></div>
-        <div className="current"><p>2</p><h3>Dirección de envío</h3></div>
-        <div><p>3</p><h3>Opciones de entrega</h3></div>
-        <div><p>4</p><h3>Método de pago</h3></div>
-      </div>
-      
-        
+          <div className="current"><p>1</p><h3>Cesta</h3></div>
+          <div className="current"><p>2</p><h3>Dirección de envío</h3></div>
+          <div><p>3</p><h3>Opciones de entrega</h3></div>
+          <div><p>4</p><h3>Método de pago</h3></div>
+        </div>
+
+
         <hr></hr>
       </header>
-        <section className="content">
+      <section className="content">
         <h2>Dirección de envío</h2>
-        <h3>{basket.length} artículos</h3>
-        <div>
-        <div className="product-containter">
-      {
-          basket.map((d, index) =>       
-              <div className="shopping-product-prev">      
-                  <img src={d[3]} />
+  
+        <div className="client-data">
+              <div className="client">
                   <div>
-                  <p> {d[4]}&nbsp;{d[5]} &nbsp;{d[6]}</p>
-                  <p>  </p>
-                  <p className="ctd"> Cantidad: {d[1]} </p>
-                  <p className="precio"> {d[2]}€ </p>
-                  </div>     
-                  <div id="prod-buttons">  
-                    <div id="moreless">
-                        <button value={index} onClick={less} className="button-3">-</button>
-                        <p className="ctd">{d[1]}</p>
-                 
-                        <button value={index} onClick={more} className="button-3">+</button>
-                    </div>
-                    <button value={index} onClick={deleteProduct} className="button-3">
-                      <RiDeleteBin6Line /></button>
+                  <p><strong>Nombre:</strong> {cliente.Nombre}</p>
+                  <p><strong>Primer apellido:</strong> {cliente.PrimerA}</p>
+                  <p><strong>Segundo Apellido:</strong> {cliente.SegundoA}</p>
+                  </div>
+                  <div>
+                  
+                  <p><strong>DNI/NIF:</strong> {cliente.NIF}</p>
+                  <p><strong>Teléfono (+34): </strong> {cliente.Teléfono}</p>
+                  </div>
+                <div>
+                  
+                  <p><strong>Dirección:</strong> {cliente.Dirección}</p>
+                  <p><strong>Número:</strong> {cliente.Número}</p>
+                  <p><strong>Código postal:</strong> {cliente.CP}</p>
+                  </div>
+                  <div>
+                  <p><strong>Ciudad:</strong> {cliente.Ciudad}</p>
+                  <p><strong>Provincia:</strong> {cliente.Provincia}</p>
                   </div>
               </div>
-          )
-        }
-        <div className="buttons">
-        <button className="button-3" onClick={del}
-        >Vaciar cesta</button>
-        <Link className={"linkmenu"}to="/store">
-        <button className="button-3">Seguir comprando</button>
-        </Link>
-        </div>
-        </div>
-        <div className="detail">
-            <h3>Resumen</h3>
-            <h4>Subtotal</h4>
-            <hr></hr>
-            <h2>Total</h2>
-            <button className="button-3" id="save-cont" onClick={continuar}>Guardar y continuar</button>
-        </div>
-        </div>
-        </section>
-        
-        <hr></hr>
-        <h1>Footer</h1>
+       
+                <div className="botones">
+                  <button className="button-3" onClick={handleClick}> Modificar datos</button>
+                  <button className="button-3" onClick={continuar}>Guardar y continuar</button>
+                </div>
+                {isShown && (
+                  <form onSubmit={register}>
+                    <div>
+                      <input
+                        placeholder="Nombre"
+                        autoComplete="off"
+                        type="text"
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                      <input
+                        placeholder="Primer Apellido"
+                        autoComplete="off"
+                        type="text"
+                        onChange={(e) => setPrimer(e.target.value)}
+                      />
+                      <input
+                        placeholder="Segundo Apellido"
+                        autoComplete="off"
+                        type="text"
+                        onChange={(e) => setSegundo(e.target.value)}
+                      />
+                      <input
+                        placeholder="NIF"
+                        autoComplete="off"
+                        type="text"
+                        onChange={(e) => setNif(e.target.value)}
+                      />
+                      <input
+                        placeholder="Teléfono"
+                        autoComplete="off"
+                        type="number"
+                        onChange={(e) => setPhone(e.target.value)}
+                      />
+                      <input
+                        placeholder="Dirección"
+                        autoComplete="off"
+                        type="text"
+                        onChange={(e) => setStreet(e.target.value)}
+                      />
+                      <input
+                        placeholder="Número"
+                        autoComplete="off"
+                        type="number"
+                        onChange={(e) => setNum(e.target.value)}
+                      />
+                      <input
+                        placeholder="Ciudad"
+                        autoComplete="off"
+                        type="text"
+                        onChange={(e) => setCity(e.target.value)}
+                      />
+                      <input
+                        placeholder="Provincia"
+                        autoComplete="off"
+                        type="text"
+                        onChange={(e) => setState(e.target.value)}
+                      />
+                    </div>
+                    <button className="button-3" type="Submit">
+                      Aceptar
+                    </button>
+                  </form>
+                )}
+
+              </div>
+
+
+
+
+      </section>
+
+      <hr></hr>
+      <h1>Footer</h1>
     </section>
   );
 };

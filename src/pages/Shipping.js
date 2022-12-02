@@ -5,6 +5,12 @@ import { RiDeleteBin6Line} from "react-icons/ri";
 import img1 from "../img/logo-blanco.png";
 
 function Address() {
+//Bloquear retroceso de página
+// window.location.hash="no-back-button";
+// window.location.hash="Again-No-back-button";
+// window.onhashchange=function(){window.location.hash="no-back-button";}
+
+
     const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')))
     let navigate = useNavigate();
   const del = (e) => {
@@ -47,57 +53,45 @@ function Address() {
        <header>
        <div className="logo">
         <img src={img1} alt="" className="pic" />
+        </div>
         <div className="shopping-route">
-        <div className="current"><h3>1</h3><h3>Cesta</h3></div>
-        <div className="current"><h3>2</h3><h3>Dirección de envío</h3></div>
-        <div className="current"><h3>3</h3><h3>Opciones de entrega</h3></div>
-        <div><h3>4</h3><h3>Método de pago</h3></div>
-      </div>
+        <div className="current"><p>1</p><h3>Cesta</h3></div>
+        <div className="current"><p>2</p><h3>Dirección de envío</h3></div>
+        <div className="current"><p>3</p><h3>Opciones de entrega</h3></div>
+        <div><p>4</p><h3>Método de pago</h3></div>
+      
       </div>
         
         <hr></hr>
       </header>
         <section className="content">
-        <h2>Dirección de envío</h2>
-        <h3>{basket.length} artículos</h3>
+        <h2>Método de envío</h2>
         <div>
-        <div className="product-containter">
-      {
-          basket.map((d, index) =>       
-              <div className="shopping-product-prev">      
-                  <img src={d[3]} />
-                  <div>
-                  <p> {d[4]}&nbsp;{d[5]} &nbsp;{d[6]}</p>
-                  <p>  </p>
-                  <p className="ctd"> Cantidad: {d[1]} </p>
-                  <p className="precio"> {d[2]}€ </p>
-                  </div>     
-                  <div id="prod-buttons">  
-                    <div id="moreless">
-                        <button value={index} onClick={less} className="button-3">-</button>
-                        <p className="ctd">{d[1]}</p>
-                 
-                        <button value={index} onClick={more} className="button-3">+</button>
-                    </div>
-                    <button value={index} onClick={deleteProduct} className="button-3">
-                      <RiDeleteBin6Line /></button>
-                  </div>
-              </div>
-          )
-        }
-        <div className="buttons">
-        <button className="button-3" onClick={del}
-        >Vaciar cesta</button>
-        <Link className={"linkmenu"}to="/store">
-        <button className="button-3">Seguir comprando</button>
-        </Link>
+        <div className="shipping-container">
+        <div>
+        <input type="radio" value="tienda" name="gender" /> 
+        <p>Recogida en tienda</p>
         </div>
+        <div>
+        <input type="radio" value="gratis" name="gender" /> 
+        <p>Gratis</p>
+        </div>
+        <div>
+        <input type="radio" value="seur" name="gender" /> 
+        <p>Seur</p>
+        </div>
+        <div>
+        <input type="radio" value="correos" name="gender" /> 
+        <p>Correos</p>
+        </div>
+      
         </div>
         <div className="detail">
-            <h3>Resumen</h3>
-            <h4>Subtotal</h4>
+            <h3>Resumen: {JSON.parse(localStorage.getItem('total'))}€</h3>
+            <h4>Subtotal: {JSON.parse(localStorage.getItem('total'))}€</h4>
+            <h4>Envío:</h4>
             <hr></hr>
-            <h2>Total</h2>
+            <h2>Total: {JSON.parse(localStorage.getItem('total'))}€</h2>
             <button className="button-3" id="save-cont" onClick={continuar}>Guardar y continuar</button>
         </div>
         </div>

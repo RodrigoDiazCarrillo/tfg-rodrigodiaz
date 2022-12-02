@@ -12,6 +12,7 @@ function Home (){
 
     <section className="home">
       <Menu />
+ 
       <div className="button-container">
       <img src={img1} alt="" className="img1" />
       <div className='div-1'>
