@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import "./Shopping.css";
 import { Link,useNavigate } from "react-router-dom";
 import { RiDeleteBin6Line} from "react-icons/ri";
+import { useUserAuth } from "../context/userAuthContext";
 import img1 from "../img/logo-blanco.png";
 
-function Shipping() {
+function Shopping() {
+  const { user } = useUserAuth();
     const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')))
     let navigate = useNavigate();
+    
+
   const del = (e) => {
     e.preventDefault();
     localStorage.setItem('basket', JSON.stringify([]))
@@ -36,30 +40,48 @@ function Shipping() {
     let values = JSON.parse(localStorage.getItem('basket'))
     let newvalue = values.filter((value)=>value[0] == e.target.value)
     setBasket(newvalue)
+   
     console.log(basket);
+    
+    
     }
-    const continuar = (e) => {
-      navigate("/cart/shipping");
+    useEffect(() => {
+      console.log(basket);
+      localStorage.setItem('basket', JSON.stringify(basket))
+      console.log("localStorage",JSON.parse(localStorage.getItem('basket')));
+    }, [basket])
+    useEffect(()=>{
+      let total =0;
+      for (let i=0; i<basket.length; i++){
+        total = total+basket[i][2]
       }
-  
+      localStorage.setItem('total', JSON.stringify(total))
+      console.log("total",JSON.parse(localStorage.getItem('total')));
+    })
+
+  const continuar = (e) => {
+      user ? navigate("/cart/address") : navigate("/login")
+      
+      }
+
   return (
+
     <section className="shopping">
-       <header>
+      <header>
       <div className="logo">
         <img src={img1} alt="" className="pic" />
-        </div>
-        <div className="shopping-route">
-        <div className="current"><p>1</p><h3>Cesta</h3></div>
-        <div className="current"><p>2</p><h3>Dirección de envío</h3></div>
-        <div><p>3</p><h3>Opciones de entrega</h3></div>
-        <div><p>4</p><h3>Método de pago</h3></div>
+      <div className="shopping-route">
+        <div className="current"><h3>1</h3><h3>Cesta</h3></div>
+        <div><h3>2</h3><h3>Dirección de envío</h3></div>
+        <div><h3>3</h3><h3>Opciones de entrega</h3></div>
+        <div><h3>4</h3><h3>Método de pago</h3></div>
       </div>
-      
+      </div>
         
         <hr></hr>
       </header>
         <section className="content">
-        <h2>Dirección de envío</h2>
+        <h2>Mi cesta</h2>
         <h3>{basket.length} artículos</h3>
         <div>
         <div className="product-containter">
@@ -71,7 +93,7 @@ function Shipping() {
                   <p> {d[4]}&nbsp;{d[5]} &nbsp;{d[6]}</p>
                   <p>  </p>
                   <p className="ctd"> Cantidad: {d[1]} </p>
-                  <p className="precio"> {d[2]}€ </p>
+                  <p className="precio"> {d[2].toFixed(2)}€ </p>
                   </div>     
                   <div id="prod-buttons">  
                     <div id="moreless">
@@ -95,10 +117,10 @@ function Shipping() {
         </div>
         </div>
         <div className="detail">
-            <h3>Resumen</h3>
-            <h4>Subtotal</h4>
+            <h3>Resumen: {JSON.parse(localStorage.getItem('total'))}€</h3>
+            <h4>Subtotal: {JSON.parse(localStorage.getItem('total'))}€</h4>
             <hr></hr>
-            <h2>Total</h2>
+            <h2>Total: {JSON.parse(localStorage.getItem('total'))}€</h2>
             <button className="button-3" id="save-cont" onClick={continuar}>Guardar y continuar</button>
         </div>
         </div>
@@ -110,5 +132,6 @@ function Shipping() {
   );
 };
 
-export default Shipping;
+export default Shopping;
+
 

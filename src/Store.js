@@ -57,14 +57,7 @@ function Store() {
     localStorage.setItem('basket', JSON.stringify(basket))
     console.log("localStorage",JSON.parse(localStorage.getItem('basket')));
   }, [basket])
-  useEffect(()=>{
-    let total =0;
-    for (let i=0; i<basket.length; i++){
-      total = total+basket[i][2]
-    }
-    localStorage.setItem('total', JSON.stringify(total))
-    console.log("total",JSON.parse(localStorage.getItem('total')));
-  })
+
   
   const addBasket = (e) => {
 
