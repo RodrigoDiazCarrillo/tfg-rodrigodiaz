@@ -21,7 +21,7 @@
   "@stripe/react-stripe-js": "^1.15.0",
   
     
-  "@stripe/stripe-js": "^1.45.0",
+  "@stripe/stripe-js": "^1.46.0",
   
     
   "@testing-library/jest-dom": "^5.16.5",
@@ -89,6 +89,8 @@
   
     
   "deploy": "gh-pages -d build",
+  
+    
   "start-server": "node server.js"
   
   },
@@ -175,6 +177,8 @@
   ]
   
   },
+  
   "homepage": "http://localhost:3000",
+  
   "proxy": "http://localhost:4242"
 }

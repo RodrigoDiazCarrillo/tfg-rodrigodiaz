@@ -12,6 +12,8 @@ import Shipping from "./pages/Shipping";
 import Address from "./pages/Address";
 import Payment from "./pages/Payment";
 import Userboard from "./pages/Userboard";
+import Success from "./pages/Success";
+import Cancel from "./pages/Cancel";
 import Savarez_corum_tm from "./pages/product-page/Savarez-corum-tm";
 import Daddario_carbono_ta from "./pages/product-page/Daddario-carbono-ta";
 
@@ -31,6 +33,8 @@ function App() {
               <Route path="/cart/address" element={<Address/>} />
               <Route path="/cart/shipping" element={<Shipping/>} />
               <Route path="/cart/payment" element={<Payment/>} />
+              <Route path="/payment_cancel" element={<Cancel/>} />
+              <Route path="/payment_success" element={<Success/>} />
               {/* Product pages */}
               <Route path="/savarez-corum-tm" element={<Savarez_corum_tm/>} />
               <Route path="/daddario-carbono-ta" element={<Daddario_carbono_ta/>} />
