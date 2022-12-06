@@ -1,5 +1,6 @@
 import { Routes, Route} from "react-router-dom";
 import { UserAuthContextProvider } from "./context/userAuthContext";
+import { CarritoContextProvider } from "./context/carritoContext";
 import "./App.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -14,13 +15,14 @@ import Payment from "./pages/Payment";
 import Userboard from "./pages/Userboard";
 import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
-import Savarez_corum_tm from "./pages/product-page/Savarez-corum-tm";
-import Daddario_carbono_ta from "./pages/product-page/Daddario-carbono-ta";
+import Product_page from "./pages/Product_page";
+
 
 function App() {
   return (
 
           <UserAuthContextProvider>
+            <CarritoContextProvider>
             <Routes>
               <Route index element={<Home />} />
               <Route path="/store" element={<Store />} />
@@ -29,21 +31,19 @@ function App() {
               <Route path="/woods" element={<Woods />} />
               <Route path="/about" element={<About />} />
               <Route path="/user" element={<Userboard/>} />
+              <Route path="producto/:id" element={<Product_page />} />
               <Route path="/cart/shopping" element={<Shopping/>} />
               <Route path="/cart/address" element={<Address/>} />
               <Route path="/cart/shipping" element={<Shipping/>} />
               <Route path="/cart/payment" element={<Payment/>} />
               <Route path="/payment_cancel" element={<Cancel/>} />
               <Route path="/payment_success" element={<Success/>} />
-              {/* Product pages */}
-              <Route path="/savarez-corum-tm" element={<Savarez_corum_tm/>} />
-              <Route path="/daddario-carbono-ta" element={<Daddario_carbono_ta/>} />
+
             </Routes>
+            </CarritoContextProvider>
           </UserAuthContextProvider>
 
   );
 }
 
 export default App;
-
- // // "homepage":"https://RodrigoDiazCarrillo.github.io/tfg-rodrigodiaz.git", 

@@ -13,11 +13,11 @@ export function Menu () {
       <div>
       <div className="logo"><img src={img1} alt="" className="pic" /></div>
       <Logger className="logger"/>
-      {window.location.pathname != "/" 
+      {/* {window.location.pathname != "/" 
       && window.location.pathname != "/woods"
       && window.location.pathname != "/about"?
         <Basket /> : <></>
-      }
+      } */}
       </div>
       <nav>
         

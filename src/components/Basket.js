@@ -23,7 +23,7 @@ export function Basket () {
          :
          <SlBasket className="basket-icon" /> 
          }
-        <div class="dropdown-content">
+        <div className="dropdown-content">
         {basket != 0?
           basket.map((d, index) =>       
           <>

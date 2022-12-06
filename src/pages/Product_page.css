@@ -1,0 +1,42 @@
+.product{
+    background-image: url("../img/418831.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top: 1rem;
+
+}
+.product-card{
+    padding: 2rem;
+    display: flex;
+    color: aliceblue;
+    margin: 10% 0 30% 0;
+}
+.product-card>div{
+    margin-left: .5rem;
+}
+.product-card>div h1{
+    margin: 0;
+}
+.product-card>div p{
+   text-align: justify;
+}
+.product-card img{
+    height: 20%;
+
+ }
+ .product .logo{
+    margin: 0 0 0 1rem;
+    width: 50%;
+}
+.product .logo>img{
+    width: 10rem;
+    object-fit: cover;
+}
+.product #back{
+    margin: .5rem;
+}
+.product .buttons{
+    display: flex;
+    justify-content: space-between;
+}
