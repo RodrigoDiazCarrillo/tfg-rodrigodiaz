@@ -24,6 +24,7 @@ function Store() {
   }, []);
 
 console.log("carrito:",carrito);
+console.log("user",user);
   return (
     <section className="store">
       {<Menu /> }

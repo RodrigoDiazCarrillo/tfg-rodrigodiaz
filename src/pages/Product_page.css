@@ -9,8 +9,10 @@
 .product-card{
     padding: 2rem;
     display: flex;
-    color: aliceblue;
-    margin: 10% 0 30% 0;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    margin: 20% 5%;
+    background-color: rgba(122, 122, 122, 0.7);
 }
 .product-card>div{
     margin-left: .5rem;
@@ -23,7 +25,9 @@
 }
 .product-card img{
     height: 20%;
-
+ }
+ .product-card .price{
+   color: rgb(29, 29, 29);
  }
  .product .logo{
     margin: 0 0 0 1rem;

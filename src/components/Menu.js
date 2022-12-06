@@ -2,10 +2,18 @@ import "./Menu.css";
 import img1 from "../img/logo-blanco.png";
 import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
+import { BsFillBasket2Fill } from "react-icons/bs";
 import { useState } from "react";
 import { Basket } from "./Basket";
 import { Logger } from "./Logger";
+import { useNavigate } from "react-router";
+
 export function Menu () {
+  const navigate = useNavigate();
+  function goToCart() {
+    navigate("/cart/shopping");
+
+};
 
   return (
     
@@ -13,11 +21,14 @@ export function Menu () {
       <div>
       <div className="logo"><img src={img1} alt="" className="pic" /></div>
       <Logger className="logger"/>
-      {/* {window.location.pathname != "/" 
+      <div className="basket_button">
+      {window.location.pathname != "/" 
       && window.location.pathname != "/woods"
       && window.location.pathname != "/about"?
-        <Basket /> : <></>
-      } */}
+      <button className="button-3" onClick={goToCart}><BsFillBasket2Fill/></button>
+      : <></>
+      }
+      </div>
       </div>
       <nav>
         

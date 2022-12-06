@@ -4,6 +4,7 @@ import { CarritoContextProvider } from "./context/carritoContext";
 import "./App.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Shopping_cart from "./pages/Shopping_cart";
 import Signup from "./pages/Signup";
 import Store from "./pages/Store";
 import Woods from "./pages/Woods";
@@ -32,6 +33,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/user" element={<Userboard/>} />
               <Route path="producto/:id" element={<Product_page />} />
+              <Route path="/shopping_cart" element={<Shopping_cart />} />
               <Route path="/cart/shopping" element={<Shopping/>} />
               <Route path="/cart/address" element={<Address/>} />
               <Route path="/cart/shipping" element={<Shipping/>} />

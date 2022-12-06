@@ -37,7 +37,7 @@ function Product_page() {
         navigate("/store");
  
     };
-  
+  console.log("roductinfo",productInfo);
     return (
 
       
@@ -46,8 +46,10 @@ function Product_page() {
        <div className="product-card">
             <img src={productInfo?.images[0]} alt={productInfo?.name}/>
           <div>
-            <h1>{productInfo?.name}</h1>
+            <h1>{productInfo?.name}&nbsp;-&nbsp;{productInfo?.stripe_metadata_modelo}</h1>
+            <h1 className="price" >Precio: {productInfo?.price.unit_amount / 100}€</h1>
             <p >{productInfo?.description}</p>
+           
             <div className="buttons" >
               <button className="button-3" onClick={addToCart}>
                 AÑADIR A LA CESTA

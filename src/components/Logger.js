@@ -43,9 +43,8 @@ export function Logger () {
              </button>
             {isShown && (
               <div className="usermenu-content">
-                <Link className={"linkuser"}to="/user">Mi usuario</Link>
-                <Link className={"linkuser"}to="/">Ver cesta</Link>
-                <button className={"linkuserbtn"} onClick={handleLogout}>Cerrar sesión</button>
+                <Link className={"linkuser"}to="/user">Perfil</Link>
+                <button className={"linkuserbtn"} onClick={handleLogout}>Salir</button>
               </div>
             )}
             </div>

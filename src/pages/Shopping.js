@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import "./Shopping.css";
 import { Link,useNavigate } from "react-router-dom";
-
+import { useCarritoContext } from "../context/carritoContext";
 import { useUserAuth } from "../context/userAuthContext";
 import img1 from "../img/logo-blanco.png";
 import img2 from "../img/basura.png";
 
 function Shopping() {
   const { user } = useUserAuth();
+  const { carrito, setCarrito } = useCarritoContext();
     const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')))
     let navigate = useNavigate();
     

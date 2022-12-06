@@ -80,6 +80,7 @@ function Userboard () {
   return (
     <section className="userboard">
       <Menu />
+      {user?
       <div className="userinfo">
         <h2>Usuario:&nbsp;{user.email}</h2>
         <div className="client">
@@ -166,6 +167,7 @@ function Userboard () {
         )}
         </div>
       </div>
+      : <h1>error</h1>}
       <Footer />
     </section>
   );

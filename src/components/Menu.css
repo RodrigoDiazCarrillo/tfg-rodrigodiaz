@@ -36,6 +36,11 @@
     margin: 0 1rem;
     text-decoration: none;
 }
+.menu .basket_button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .menu .linkmenu:hover{
     color: rgb(255, 99, 122);
     scale: .95;
