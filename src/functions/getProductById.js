@@ -7,10 +7,13 @@ async function getProductById(id) {
     const docuRef = doc(collectionRef, id);
     const snapDoc = await getDoc(docuRef);
     const producto = snapDoc.data();
-    // obtenemos el/los precio(s) del producto
+    
     const precioSnaps = await getDocs(collection(snapDoc.ref, "prices"));
     producto.price = precioSnaps.docs[0].data();
     producto.priceId = precioSnaps.docs[0].id;
+
+    producto.quantity = 1;
+
     return producto;
   } catch (error) {
     console.log(error);

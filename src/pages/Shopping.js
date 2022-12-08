@@ -8,67 +8,81 @@ import img2 from "../img/basura.png";
 
 function Shopping() {
   const { user } = useUserAuth();
-  const { carrito, setCarrito } = useCarritoContext();
+ 
     const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')))
     let navigate = useNavigate();
-    
+    const [ carrito, setCarrito ] = useState([]);
+ 
+    useEffect(() => {
+      if (localStorage.getItem('carrito'))
+      {
+        setCarrito(JSON.parse(localStorage.getItem('carrito')))
+        console.log("cesta", carrito);
+      }
+      
+    }, []);
+    console.log("shopping", carrito);
 
-  const del = (e) => {
-    e.preventDefault();
-    localStorage.setItem('basket', JSON.stringify([]))
+   const del = (e) => {
+    localStorage.removeItem("carrito");
+    //localStorage.setItem('carrito', JSON.stringify([]))
     navigate("/store");
   }
   const more = (e) => {
-    let modify = basket
-    let value = basket[e.target.value][1]
-    modify[e.target.value][1]=value+1
-    setBasket(modify)
-    localStorage.setItem('basket', JSON.stringify(basket))
-    console.log(modify,JSON.parse(localStorage.getItem('basket')));
-    window.location.href = window.location.href
+    window.location.reload(true);
+    let value = e.target.value;
+    var index = carrito.map(p => p.price.product).indexOf(value)
+    let cantidad = carrito[index].quantity
+    carrito[index].quantity = cantidad +1;
+    console.log(carrito);
+    localStorage.setItem('carrito', JSON.stringify(carrito))
   }
   const less = (e) => {
-    let modify = basket
-    let value = basket[e.target.value][1]
-    if (modify[e.target.value][1]>1){
-      modify[e.target.value][1]=value-1
-      setBasket(modify)
-    localStorage.setItem('basket', JSON.stringify(basket))
-    console.log(modify,JSON.parse(localStorage.getItem('basket')));
-    window.location.href = window.location.href
+    
+    let value = e.target.value;
+    var index = carrito.map(p => p.price.product).indexOf(value)
+    if (carrito[index].quantity >1){
+    let cantidad = carrito[index].quantity
+    
+      carrito[index].quantity = cantidad -1;
+    console.log(carrito);
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+    window.location.reload(true);
     }
+    else if(carrito.length>1){
+      window.location.reload(true);
+      let value = e.target.value;
+      var index = carrito.map(p => p.price.product).indexOf(value)
+      let values = carrito;
+       values.splice(index, 1)
+      
+      setCarrito(values)
+      console.log(carrito);
+      localStorage.setItem('carrito', JSON.stringify(carrito))
+    }
+    else if(carrito.length==1){
+      localStorage.removeItem("carrito");
+    navigate("/store");
+    }
+    
   }
   const deleteProduct = (e) => {
-    if (basket.length >1){
-    let values = JSON.parse(localStorage.getItem('basket'))
+    if(carrito.length>1){
+    window.location.reload(true);
+    let value = e.target.value;
+    var index = carrito.map(p => p.price.product).indexOf(value)
+    let values = carrito;
+     values.splice(index, 1)
     
-    console.log(values[e.target.value]); 
-    let newvalue = values.filter((value)=>value[0] != e.target.value)
-    setBasket(newvalue)
+    setCarrito(values)
+    console.log(carrito);
+    localStorage.setItem('carrito', JSON.stringify(carrito))
     }
-    else{
-      e.preventDefault();
-      localStorage.setItem('basket', JSON.stringify([]))
-      navigate("/store");
+    else if(carrito.length==1){
+      localStorage.removeItem("carrito");
+    navigate("/store");
     }
     }
-
-    useEffect(() => {
-      console.log(basket);
-      localStorage.setItem('basket', JSON.stringify(basket))
-      console.log("localStorage",JSON.parse(localStorage.getItem('basket')));
-    }, [basket])
-
-    useEffect(()=>{
-      let total =0;
-      for (let i=0; i<basket.length; i++){
-        total = total+basket[i][2]*basket[i][1]
-      }
-      localStorage.setItem('total', JSON.stringify(total.toFixed(2)))
-      console.log("total",JSON.parse(localStorage.getItem('total')));
-    },[more,less])
-   
-
   const continuar = (e) => {
       user ? navigate("/cart/address") : navigate("/login")
       
@@ -93,36 +107,38 @@ function Shopping() {
       </header>
         <section className="content">
         <h2>Mi cesta</h2>
-        <h3>{basket.length} artículos</h3>
+        <h3>artículos</h3>
         <div>
-        <div className="product-containter">
-      {
-          basket.map((d, index) =>       
-              <div className="shopping-product-prev">      
-                  <img src={d[3]} />
-                  <div>
-                  <p> {d[4]}&nbsp;{d[5]} &nbsp;{d[6]}</p>
-                  <p>  </p>
-                  <p className="ctd"> Cantidad: {d[1]} </p>
-                  <p className="precio"> {d[2].toFixed(2)}€ </p>
-                  </div>     
-                  <div id="prod-buttons">  
+
+          <div className="product-containter">
+            {carrito.map((p) => (
+              <div className="shopping-product-prev">
+                <img src={p.images[0]} alt={p.name} />
+                <div>
+                <h1>{p.name}&nbsp;-&nbsp;{p.stripe_metadata_modelo}</h1>
+                <p className="ctd"> Cantidad: {p.quantity} </p>
+                <p className="precio">{p.price.unit_amount / 100}€</p>
+                </div>
+                <div id="prod-buttons">  
                     <div id="moreless">
-                        <button value={index} onClick={less} className="button-3">-</button>
-                        <p className="ctd">{d[1]}</p>
-                 
-                        <button value={index} onClick={more} className="button-3">+</button>
+                       {/* Botón - */}
+                        <button className="button-3" value={p.price.product} onClick={less}>-</button>
+                        <p className="ctd">{p.quantity}</p>
+                         {/* Botón + */}
+                        <button className="button-3" value={p.price.product} onClick={more}>+</button>
                     </div>
-                    <button value={index} onClick={deleteProduct} className="button-3">
-                    <img src={img2} alt="" className="pic" />
+                    {/* Botón borrar */}
+                    <button  className="button-3" value={p.price.product} onClick={deleteProduct}>
+                   X
                       </button>
                   </div>
+               
               </div>
-          )
-        }
+            ))}
+
         <div className="buttons">
-        <button className="button-3" onClick={del}
-        >Vaciar cesta</button>
+          {/* Botón vaciar */}
+        <button className="button-3" onClick={del}>Vaciar cesta</button>
         <Link className={"linkmenu"}to="/store">
         <button className="button-3">Seguir comprando</button>
         </Link>

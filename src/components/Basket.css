@@ -1,7 +1,6 @@
 .basket {
   display: flex;
   align-items: center;
-  padding: .5rem;
 }
 
 .basket .basket-icon {
@@ -18,7 +17,15 @@
   position: relative;
   display: inline-block;
   cursor: default;
-  padding: 0 .5rem 0 .4rem;
+  padding: 0;
+}
+.basket-card img{
+ width: 70%;
+ 
+}
+.basket-card .text{
+  color:rgb(0, 0, 0);
+ 
 }
 
 .dropdown-content {

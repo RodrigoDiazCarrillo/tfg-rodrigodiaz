@@ -49,6 +49,9 @@
 .menu p{
     color: white;
 }
+.menu .lleno{
+    color: rgb(255, 99, 122);
+}
 /* medium */
 @media only screen and (min-width:768px) {
     .menu .logo{

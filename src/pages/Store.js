@@ -17,17 +17,24 @@ function Store() {
     async function getProducts() {
       const products = await getActiveProducts();
       setProductos(products);
-      //console.log("productosHome", products);
+      console.log("productosHome", products);
     }
 
     getProducts();
+    if (localStorage.getItem('carrito'))
+    {
+      setCarrito(JSON.parse(localStorage.getItem('carrito')))
+      
+    }
+    
   }, []);
 
-console.log("carrito:",carrito);
+  console.log("carritostore",carrito)
 console.log("user",user);
   return (
     <section className="store">
-      {<Menu /> }
+      <Menu carrito={carrito}/> 
+     
       <section className="products">
         {productos
           ? productos.map((p) => (

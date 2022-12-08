@@ -12,10 +12,11 @@ import { useNavigate } from "react-router";
 function Product_page() {
   const navigate = useNavigate();
     const { id } = useParams();
-    console.log(id);
     const [productInfo, setProductInfo] = useState(null);
+    //const [ carrito, setCarrito ] = useState([]);
     const { carrito, setCarrito } = useCarritoContext();
     const { user } = useUserAuth();
+
     useEffect(() => {
       async function getProductInfo() {
         const product = await getProductById(id);
@@ -28,12 +29,44 @@ function Product_page() {
       getProductInfo();
     }, [id]);
   
+ 
+  
     function addToCart() {
-      setCarrito([...carrito, productInfo]);
       console.log(carrito);
-    }
-    function handleBack() {
+      // //Si el producto está anadido se incrementa la cantidad
+      if(carrito !=undefined){
 
+     
+        if (carrito.find(e => e.price.product === productInfo.price.product)){
+          //Encuentra el indice del producto dentro del carro
+          var index = carrito.map(p => p.price.product).indexOf(productInfo.price.product)
+          let cantidad = carrito[index].quantity
+          carrito[index].quantity = cantidad +1;
+          console.log("index",index,carrito);
+          localStorage.setItem('carrito', JSON.stringify(carrito))
+          alert(`${productInfo.name} ${productInfo?.stripe_metadata_modelo} - Cantidad: ${carrito[index].quantity}`)
+        }
+
+      else{
+       setCarrito([...carrito, productInfo]);
+       //setCarrito(current => [...current,productInfo ])
+       alert(`Se ha añadido a su cesta: ${productInfo.name}`)
+      
+      console.log("carro",carrito);
+
+      }
+    }
+      else{
+        console.log("no hay carrito");      
+        setCarrito([...carrito, productInfo]);
+        localStorage.setItem('carrito', JSON.stringify(carrito))     
+       alert(`Se ha añadido a su cesta: ${productInfo.name}`)   
+      console.log("carro",carrito);   
+      }
+    }
+
+    function handleBack() {
+      localStorage.setItem('carrito', JSON.stringify(carrito))   
         navigate("/store");
  
     };
@@ -43,9 +76,12 @@ function Product_page() {
       
       <section className="product">
         <div className="logo"><img src={img1} alt="" className="pic" /></div>
+        
        <div className="product-card">
+        
             <img src={productInfo?.images[0]} alt={productInfo?.name}/>
           <div>
+            {/* <h1>{productInfo?.price.product}/cantidad: {productInfo?.quantity}</h1> */}
             <h1>{productInfo?.name}&nbsp;-&nbsp;{productInfo?.stripe_metadata_modelo}</h1>
             <h1 className="price" >Precio: {productInfo?.price.unit_amount / 100}€</h1>
             <p >{productInfo?.description}</p>
@@ -67,7 +103,10 @@ function Product_page() {
               </button>
             </div>
           </div>
+       
+          
         </div> 
+              
         <button id="back" className="button-3" onClick={handleBack}>Volver</button>
       <Footer/>
       

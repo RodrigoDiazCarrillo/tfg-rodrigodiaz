@@ -11,23 +11,10 @@ async function createCheckoutSession(uid, cart) {
     success_url: "https://e-commerce-stripe-firebase.web.app/perfil",
     cancel_url: window.location.origin,
     collect_shipping_address: true,
-    // line_items: [
-    //   {
-    //     quantity: 1,
-    //     price: "price_1MAy9sFFJcsNwwzTtCUKonHz",
-
-    //   }, {
-    //     quantity: 1,
-    //     price: "price_1MBG0hFFJcsNwwzTSwGSxTGs",
-
-    //   }, {
-    //     quantity: 1,
-    //     price: "price_1MBtSSFFJcsNwwzTEwgjEF9h",
-
-    //   }]
+   
     line_items: cart.map((item) => {
       return {
-        quantity: 1,
+        quantity: item.quantity,
         price: item.priceId,
       };
     }),

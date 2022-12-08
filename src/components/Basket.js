@@ -1,56 +1,54 @@
 import "./Basket.css";
-import { SlBasket,SlBasketLoaded } from "react-icons/sl";
+import { BsFillBasket2Fill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
 export function Basket () {
-
-  const [basket, setBasket] = useState(0)
+  const [ carrito, setCarrito ] = useState(0);
+ 
   useEffect(() => {
-
-      setBasket(JSON.parse(localStorage.getItem('basket')))
+    if (localStorage.getItem('carrito'))
+    {
+      setCarrito(JSON.parse(localStorage.getItem('carrito')))
+      console.log("cesta", carrito);
+    }
     
-
-  }, [localStorage.getItem('basket')])
+  }, []);
 
   return (
     <section className="basket">  
     <div>
         <div className="button-3"id="dropdown">
-        {basket != 0? 
-         <SlBasketLoaded className="basketloaded-icon" />
+        {carrito !== 0? 
+         <BsFillBasket2Fill className="basketloaded-icon" />
          :
-         <SlBasket className="basket-icon" /> 
+         <BsFillBasket2Fill className="basket-icon" /> 
          }
-        <div className="dropdown-content">
-        {basket != 0?
-          basket.map((d, index) =>       
-          <>
-              <div className="basket-product-prev">      
-                  <img src={d[3]} />
-                  <div>
-                  <h3> {d[4]}&nbsp;{d[5]}</h3>
-                  <h3> {d[6]} </h3>
-                  <p className="ctd"> Cantidad: {d[1]} </p>
-                  <p className="precio"> {d[2].toFixed(2)}€ </p>
-                  </div>     
-                         
-              </div>
-              <hr></hr>
-              </>
-          )
-          
-          :
 
-          <p >Su cesta está vacía</p>
-        }
-        {basket != 0?
+        <div className="dropdown-content">
+        {carrito !== 0?
+        <div className="basket-card">
+     
+        {carrito.map((p) => (
+        
+              <div key={p.id}>
+                <div className="card">
+                  <img src={p.images[0]} alt={p.name}/>
+                  <div className="text">
+                    <h3 >{p.name}&nbsp;{p.stripe_metadata_modelo}</h3>
+                  </div>
+                </div>
+
+              </div>
+           
+          ))}
         <Link className={"linkmenu"}to="/cart/shopping">
         <button className="button-3">Ver cesta</button>
         </Link>
+        </div>
         :
-        <></>
+        <p >Su cesta está vacía</p>
         }
         </div>
         
