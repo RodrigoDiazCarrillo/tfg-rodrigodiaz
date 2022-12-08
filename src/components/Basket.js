@@ -2,19 +2,20 @@ import "./Basket.css";
 import { BsFillBasket2Fill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useCarritoContext } from "../context/carritoContext";
 
 export function Basket () {
-  const [ carrito, setCarrito ] = useState(0);
+  const { carrito, setCarrito } = useCarritoContext();
  
-  useEffect(() => {
-    if (localStorage.getItem('carrito'))
-    {
-      setCarrito(JSON.parse(localStorage.getItem('carrito')))
-      console.log("cesta", carrito);
-    }
+  // useEffect(() => {
+  //   if (localStorage.getItem('carrito'))
+  //   {
+  //     setCarrito(JSON.parse(localStorage.getItem('carrito')))
+  //     console.log("cesta", carrito);
+  //   }
     
-  }, []);
+  // }, [localStorage.getItem('carrito')]);
+
 
   return (
     <section className="basket">  
@@ -27,7 +28,7 @@ export function Basket () {
          }
 
         <div className="dropdown-content">
-        {carrito !== 0?
+        {carrito !=0?
         <div className="basket-card">
      
         {carrito.map((p) => (
@@ -42,13 +43,15 @@ export function Basket () {
 
               </div>
            
-          ))}
+          ))
+          }
+        
         <Link className={"linkmenu"}to="/cart/shopping">
         <button className="button-3">Ver cesta</button>
         </Link>
         </div>
         :
-        <p >Su cesta está vacía</p>
+        <p id="vacia">Su cesta está vacía</p>
         }
         </div>
         

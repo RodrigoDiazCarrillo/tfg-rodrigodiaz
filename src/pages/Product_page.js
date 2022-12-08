@@ -32,11 +32,10 @@ function Product_page() {
  
   
     function addToCart() {
-      console.log(carrito);
-      // //Si el producto está anadido se incrementa la cantidad
-      if(carrito !=undefined){
 
-     
+      // //Si el producto está anadido se incrementa la cantidad
+      if(carrito !=0){
+   
         if (carrito.find(e => e.price.product === productInfo.price.product)){
           //Encuentra el indice del producto dentro del carro
           var index = carrito.map(p => p.price.product).indexOf(productInfo.price.product)
@@ -46,8 +45,10 @@ function Product_page() {
           localStorage.setItem('carrito', JSON.stringify(carrito))
           alert(`${productInfo.name} ${productInfo?.stripe_metadata_modelo} - Cantidad: ${carrito[index].quantity}`)
         }
-
-      else{
+        else if(carrito == 0){
+console.log("ok");
+        }
+      else {
        setCarrito([...carrito, productInfo]);
        //setCarrito(current => [...current,productInfo ])
        alert(`Se ha añadido a su cesta: ${productInfo.name}`)
@@ -58,7 +59,7 @@ function Product_page() {
     }
       else{
         console.log("no hay carrito");      
-        setCarrito([...carrito, productInfo]);
+        setCarrito([productInfo]);
         localStorage.setItem('carrito', JSON.stringify(carrito))     
        alert(`Se ha añadido a su cesta: ${productInfo.name}`)   
       console.log("carro",carrito);   
