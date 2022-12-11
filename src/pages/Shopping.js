@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import "./Shopping.css";
 import { Link,useNavigate } from "react-router-dom";
-import { useCarritoContext } from "../context/carritoContext";
 import { useUserAuth } from "../context/userAuthContext";
 import img1 from "../img/logo-blanco.png";
-import img2 from "../img/basura.png";
+
 
 function Shopping() {
-  const { user } = useUserAuth();
- 
-    const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')))
+    const { user } = useUserAuth();
     let navigate = useNavigate();
     const [ carrito, setCarrito ] = useState([]);
+    const [ total, setTotal ] = useState();
  
     useEffect(() => {
       if (localStorage.getItem('carrito'))
@@ -21,13 +19,24 @@ function Shopping() {
       }
       
     }, []);
-    console.log("shopping", carrito);
+        //Contabilizar precio total
+        useEffect(() => {
+          if(carrito){
+            let total = 0
+            carrito.map((p) => (
+             total=total + (p.price.unit_amount*p.quantity)/100
+            ))
+            setTotal(total);
+            localStorage.setItem('total', JSON.stringify(total))
+          }
+         }, [<button></button>]);
 
    const del = (e) => {
     localStorage.removeItem("carrito");
-    //localStorage.setItem('carrito', JSON.stringify([]))
+    setCarrito(0);
     navigate("/store");
   }
+  
   const more = (e) => {
     window.location.reload(true);
     let value = e.target.value;
@@ -145,8 +154,10 @@ function Shopping() {
         </div>
         </div>
         <div className="detail">
-            <h3>Resumen: {JSON.parse(localStorage.getItem('total'))}€</h3>
-            <h4>Subtotal: {JSON.parse(localStorage.getItem('total'))}€</h4>
+            {carrito.map((p) => (
+              <p>{p.price.unit_amount/100}€&nbsp;x&nbsp;{p.quantity}ud.</p>
+            ))}
+        
             <hr></hr>
             <h2>Total: {JSON.parse(localStorage.getItem('total'))}€</h2>
             <button className="button-3" id="save-cont" onClick={continuar}>Guardar y continuar</button>

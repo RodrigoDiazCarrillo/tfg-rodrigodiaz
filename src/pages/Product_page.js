@@ -16,6 +16,7 @@ function Product_page() {
     //const [ carrito, setCarrito ] = useState([]);
     const { carrito, setCarrito } = useCarritoContext();
     const { user } = useUserAuth();
+    const [ total, setTotal ] = useState();
 
     useEffect(() => {
       async function getProductInfo() {
@@ -28,9 +29,18 @@ function Product_page() {
       }
       getProductInfo();
     }, [id]);
-  
+         //Contabilizar precio total
+         useEffect(() => {
+          if(carrito){
+            let total = 0
+            carrito.map((p) => (
+             total=total + (p.price.unit_amount*p.quantity)/100
+            ))
+            setTotal(total);
+            localStorage.setItem('total', JSON.stringify(total))
+          }
+         }, []);
  
-  
     function addToCart() {
 
       // //Si el producto está anadido se incrementa la cantidad

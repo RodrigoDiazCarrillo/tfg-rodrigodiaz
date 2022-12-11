@@ -12,7 +12,6 @@ import About from "./pages/About";
 import Shopping from "./pages/Shopping";
 import Shipping from "./pages/Shipping";
 import Address from "./pages/Address";
-import Payment from "./pages/Payment";
 import Userboard from "./pages/Userboard";
 import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
@@ -37,7 +36,6 @@ function App() {
               <Route path="/cart/shopping" element={<Shopping/>} />
               <Route path="/cart/address" element={<Address/>} />
               <Route path="/cart/shipping" element={<Shipping/>} />
-              <Route path="/cart/payment" element={<Payment/>} />
               <Route path="/payment_cancel" element={<Cancel/>} />
               <Route path="/payment_success" element={<Success/>} />
 

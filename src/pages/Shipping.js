@@ -1,51 +1,31 @@
 import { useEffect, useState } from "react";
 import "./Shopping.css";
 import { Link,useNavigate } from "react-router-dom";
-import { RiDeleteBin6Line} from "react-icons/ri";
 import img1 from "../img/logo-blanco.png";
+import { useCarritoContext } from "../context/carritoContext";
+import  createCheckoutSession  from "../functions/createCheckoutSession";
+import { useUserAuth } from "../context/userAuthContext";
 
 function Address() {
 //Bloquear retroceso de página
 // window.location.hash="no-back-button";
 // window.location.hash="Again-No-back-button";
 // window.onhashchange=function(){window.location.hash="no-back-button";}
-
-
-    const [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')))
+    const { user } = useUserAuth();
+    const { carrito, setCarrito } = useCarritoContext();
     let navigate = useNavigate();
-  const del = (e) => {
-    e.preventDefault();
-    localStorage.setItem('basket', JSON.stringify([]))
-    navigate("/store");
-  }
-  const more = (e) => {
-    let modify = basket
-    let value = basket[e.target.value][1]
-    modify[e.target.value][1]=value+1
-    setBasket(modify)
-    localStorage.setItem('basket', JSON.stringify(basket))
-    console.log(modify,JSON.parse(localStorage.getItem('basket')));
-    window.location.href = window.location.href
-  }
-  const less = (e) => {
-    let modify = basket
-    let value = basket[e.target.value][1]
-    if (modify[e.target.value][1]>1){
-      modify[e.target.value][1]=value-1
-      setBasket(modify)
-    localStorage.setItem('basket', JSON.stringify(basket))
-    console.log(modify,JSON.parse(localStorage.getItem('basket')));
-    window.location.href = window.location.href
-    }
-  }
-  const deleteProduct = (e) => {
-    let values = JSON.parse(localStorage.getItem('basket'))
-    let newvalue = values.filter((value)=>value[0] == e.target.value)
-    setBasket(newvalue)
-    console.log(basket);
-    }
+
+    useEffect(() => {
+      if (localStorage.getItem('carrito'))
+      {
+        setCarrito(JSON.parse(localStorage.getItem('carrito')))
+        console.log("cesta", carrito);
+      }
+      
+    }, []);
+
     const continuar = (e) => {
-      navigate("/cart/payment");
+      createCheckoutSession(user.uid, carrito );
       }
   
   return (

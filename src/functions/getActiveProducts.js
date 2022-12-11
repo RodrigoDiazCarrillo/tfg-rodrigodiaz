@@ -6,7 +6,7 @@ export default async function () {
   const filtrarActivos = query(collectionRef, where("active", "==", true));
   const snaps = await getDocs(filtrarActivos);
   const productos = [];
-  // ciclo asíncrono para obtener los precios junto con la descripción del producto
+  // Incluir precios en la descripción del producto
   for await (const snap of snaps.docs) {
     const producto = snap.data();
     producto.id = snap.id;

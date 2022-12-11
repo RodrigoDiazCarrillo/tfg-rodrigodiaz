@@ -10,8 +10,8 @@ import { useCarritoContext } from "../context/carritoContext";
 function Store() {
   const [productos, setProductos] = useState(null);
   const { user } = useUserAuth();
-  const [productInfo, setProductInfo] = useState(null);
   const { carrito, setCarrito } = useCarritoContext();
+  const [ total, setTotal ] = useState();
 
   useEffect(() => {
     async function getProducts() {
@@ -23,11 +23,21 @@ function Store() {
     getProducts();
     if (localStorage.getItem('carrito'))
     {
-      setCarrito(JSON.parse(localStorage.getItem('carrito')))
-      
+      setCarrito(JSON.parse(localStorage.getItem('carrito')))    
     }
     
   }, []);
+       //Contabilizar precio total
+       useEffect(() => {
+        if(carrito){
+          let total = 0
+          carrito.map((p) => (
+           total=total + (p.price.unit_amount*p.quantity)/100
+          ))
+          setTotal(total);
+          localStorage.setItem('total', JSON.stringify(total))
+        }
+       }, [<Link/>]);
 
   console.log("carritostore",carrito)
 console.log("user",user);

@@ -11,7 +11,6 @@ async function createCheckoutSession(uid, cart) {
     success_url: "https://e-commerce-stripe-firebase.web.app/perfil",
     cancel_url: window.location.origin,
     collect_shipping_address: true,
-   
     line_items: cart.map((item) => {
       return {
         quantity: item.quantity,

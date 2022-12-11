@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Address.css";
 import { Link, useNavigate } from "react-router-dom";
-import { RiDeleteBin6Line } from "react-icons/ri";
 import img1 from "../img/logo-blanco.png";
 import { useUserAuth } from "../context/userAuthContext";
 import { auth, db } from "../firebase-config";
@@ -83,24 +82,24 @@ function Shipping() {
         <div className="client-data">
               <div className="client">
                   <div>
-                  <p><strong>Nombre:</strong> {cliente.Nombre}</p>
-                  <p><strong>Primer apellido:</strong> {cliente.PrimerA}</p>
-                  <p><strong>Segundo Apellido:</strong> {cliente.SegundoA}</p>
+                  <p><strong>Nombre:</strong> {cliente?.Nombre}</p>
+                  <p><strong>Primer apellido:</strong> {cliente?.PrimerA}</p>
+                  <p><strong>Segundo Apellido:</strong> {cliente?.SegundoA}</p>
                   </div>
                   <div>
                   
-                  <p><strong>DNI/NIF:</strong> {cliente.NIF}</p>
-                  <p><strong>Teléfono (+34): </strong> {cliente.Teléfono}</p>
+                  <p><strong>DNI/NIF:</strong> {cliente?.NIF}</p>
+                  <p><strong>Teléfono (+34): </strong> {cliente?.Teléfono}</p>
                   </div>
                 <div>
                   
-                  <p><strong>Dirección:</strong> {cliente.Dirección}</p>
-                  <p><strong>Número:</strong> {cliente.Número}</p>
-                  <p><strong>Código postal:</strong> {cliente.CP}</p>
+                  <p><strong>Dirección:</strong> {cliente?.Dirección}</p>
+                  <p><strong>Número:</strong> {cliente?.Número}</p>
+                  <p><strong>Código postal:</strong> {cliente?.CP}</p>
                   </div>
                   <div>
-                  <p><strong>Ciudad:</strong> {cliente.Ciudad}</p>
-                  <p><strong>Provincia:</strong> {cliente.Provincia}</p>
+                  <p><strong>Ciudad:</strong> {cliente?.Ciudad}</p>
+                  <p><strong>Provincia:</strong> {cliente?.Provincia}</p>
                   </div>
               </div>
        
@@ -112,54 +111,63 @@ function Shipping() {
                   <form onSubmit={register}>
                     <div>
                       <input
+                        required
                         placeholder="Nombre"
                         autoComplete="off"
                         type="text"
                         onChange={(e) => setName(e.target.value)}
                       />
                       <input
+                        required
                         placeholder="Primer Apellido"
                         autoComplete="off"
                         type="text"
                         onChange={(e) => setPrimer(e.target.value)}
                       />
                       <input
+                        required
                         placeholder="Segundo Apellido"
                         autoComplete="off"
                         type="text"
                         onChange={(e) => setSegundo(e.target.value)}
                       />
                       <input
+                        required
                         placeholder="NIF"
                         autoComplete="off"
                         type="text"
                         onChange={(e) => setNif(e.target.value)}
                       />
                       <input
+                        required
                         placeholder="Teléfono"
                         autoComplete="off"
                         type="number"
                         onChange={(e) => setPhone(e.target.value)}
                       />
                       <input
+                        required
                         placeholder="Dirección"
                         autoComplete="off"
                         type="text"
                         onChange={(e) => setStreet(e.target.value)}
                       />
                       <input
+                        required
                         placeholder="Número"
                         autoComplete="off"
                         type="number"
                         onChange={(e) => setNum(e.target.value)}
                       />
                       <input
+                        required
                         placeholder="Ciudad"
                         autoComplete="off"
                         type="text"
                         onChange={(e) => setCity(e.target.value)}
                       />
                       <input
+                        required
                         placeholder="Provincia"
                         autoComplete="off"
                         type="text"

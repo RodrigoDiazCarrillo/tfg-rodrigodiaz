@@ -11,7 +11,6 @@ async function getProductById(id) {
     const precioSnaps = await getDocs(collection(snapDoc.ref, "prices"));
     producto.price = precioSnaps.docs[0].data();
     producto.priceId = precioSnaps.docs[0].id;
-
     producto.quantity = 1;
 
     return producto;
