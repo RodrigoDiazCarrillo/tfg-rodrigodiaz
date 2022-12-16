@@ -108,54 +108,63 @@ function Userboard () {
             <input
               placeholder="Nombre"
               autoComplete="off"
+              required
               type="text"
               onChange={(e) => setName(e.target.value)}
             />
               <input
               placeholder="Primer Apellido"
               autoComplete="off"
+              required
               type="text"
               onChange={(e) => setPrimer(e.target.value)}
             />
                <input
               placeholder="Segundo Apellido"
               autoComplete="off"
+              required
               type="text"
               onChange={(e) => setSegundo(e.target.value)}
             />
             <input
               placeholder="NIF"
               autoComplete="off"
+              required
               type="text"
               onChange={(e) => setNif(e.target.value)}
             />
              <input
               placeholder="Teléfono"
               autoComplete="off"
+              required
               type="number"
               onChange={(e) => setPhone(e.target.value)}
             />
              <input
               placeholder="Dirección"
               autoComplete="off"
+              required
               type="text"
               onChange={(e) => setStreet(e.target.value)}
             />
              <input
               placeholder="Número"
               autoComplete="off"
+              required
               type="number"
               onChange={(e) => setNum(e.target.value)}
             />
              <input
               placeholder="Ciudad"
               autoComplete="off"
+              required
               type="text"
               onChange={(e) => setCity(e.target.value)}
             />
              <input
               placeholder="Provincia"
               autoComplete="off"
+              required
               type="text"
               onChange={(e) => setState(e.target.value)}
             />

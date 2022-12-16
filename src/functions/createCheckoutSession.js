@@ -8,9 +8,34 @@ async function createCheckoutSession(uid, cart) {
   const { id } = await addDoc(collectionRef, {
     
     mode: "payment",
-    success_url: "https://e-commerce-stripe-firebase.web.app/perfil",
+    success_url: window.location.origin,
     cancel_url: window.location.origin,
     collect_shipping_address: true,
+    automatic_tax:  true,
+   
+      
+    shipping_options: [
+      {
+        shipping_rate_data: {
+          type: 'fixed_amount',
+          fixed_amount: {
+            amount: 1500,
+            currency: 'eur',
+          },
+          display_name: 'Next day air',
+          delivery_estimate: {
+            minimum: {
+              unit: 'business_day',
+              value: 1,
+            },
+            maximum: {
+              unit: 'business_day',
+              value: 1,
+            },
+          },
+        },
+      },
+    ],
     line_items: cart.map((item) => {
       return {
         quantity: item.quantity,

@@ -5,6 +5,7 @@ import img1 from "../img/logo-blanco.png";
 import { useCarritoContext } from "../context/carritoContext";
 import  createCheckoutSession  from "../functions/createCheckoutSession";
 import { useUserAuth } from "../context/userAuthContext";
+import { Footer } from "../components/Footer";
 
 function Address() {
 //Bloquear retroceso de página
@@ -78,7 +79,7 @@ function Address() {
         </section>
         
         <hr></hr>
-        <h1>Footer</h1>
+        <Footer/>
     </section>
   );
 };

@@ -4,9 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import img1 from "../img/logo-blanco.png";
 import { useUserAuth } from "../context/userAuthContext";
 import { auth, db } from "../firebase-config";
+import { Footer } from "../components/Footer";
 import { getFirestore, doc, getDoc, addDoc, setDoc, updateDoc, collection } from "firebase/firestore";
 
 function Shipping() {
+
   const [cliente, setCliente] = useState({});
   const [name, setName] = useState("");
   const [primer, setPrimer] = useState("");
@@ -44,14 +46,16 @@ function Shipping() {
     }
 
   };
-
-
+  
   useEffect(() => {
+  
     const querydb = getFirestore();
     const queryDoc = doc(querydb, 'clientes', user.email)
     getDoc(queryDoc)
       .then(res => setCliente(res.data()))
+
   }, [register])
+
   const handleClick = event => {
     // Toggle shown state
     setIsShown(current => !current);
@@ -188,7 +192,7 @@ function Shipping() {
       </section>
 
       <hr></hr>
-      <h1>Footer</h1>
+      <Footer/>
     </section>
   );
 };

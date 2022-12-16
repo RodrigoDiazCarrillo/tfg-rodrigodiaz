@@ -32,7 +32,7 @@ export function Menu ({carrito}) {
       && window.location.pathname != "/woods"
       && window.location.pathname != "/about"?
       <button className="button-3" >
-        {carrito.length>0? <Basket className="lleno"/>:<Basket/>}
+        {carrito? <Basket className="lleno"/>:<Basket/>}
         </button>
       : <></>
       }

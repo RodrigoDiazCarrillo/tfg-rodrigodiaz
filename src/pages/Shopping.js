@@ -3,6 +3,7 @@ import "./Shopping.css";
 import { Link,useNavigate } from "react-router-dom";
 import { useUserAuth } from "../context/userAuthContext";
 import img1 from "../img/logo-blanco.png";
+import { Footer } from "../components/Footer";
 
 
 function Shopping() {
@@ -166,7 +167,7 @@ function Shopping() {
         </section>
         
         <hr></hr>
-        <h1>Footer</h1>
+        <Footer/>
     </section>
   );
 };
