@@ -15,13 +15,23 @@ export function Basket () {
   //   }
     
   // }, [localStorage.getItem('carrito')]);
+ useEffect(() => {
 
+    if (localStorage.getItem('carrito'))
+    {
+      setCarrito(JSON.parse(localStorage.getItem('carrito')))    
+    }
+    else{
+      setCarrito([])
+    }
+    
+  }, []);
 
   return (
     <section className="basket">  
     <div>
         <div className="button-3"id="dropdown">
-        {carrito !== 0? 
+        {carrito.length !== 0? 
          <BsFillBasket2Fill className="basketloaded-icon" />
          :
          <BsFillBasket2Fill className="basket-icon" /> 

@@ -17,6 +17,8 @@ function Shopping() {
       {
         setCarrito(JSON.parse(localStorage.getItem('carrito')))
         console.log("cesta", carrito);
+      }else{
+        setCarrito(carrito)
       }
       
     }, []);
@@ -34,7 +36,7 @@ function Shopping() {
 
    const del = (e) => {
     localStorage.removeItem("carrito");
-    setCarrito(0);
+    setCarrito(carrito);
     navigate("/store");
   }
   
@@ -85,10 +87,11 @@ function Shopping() {
      values.splice(index, 1)
     
     setCarrito(values)
-    console.log(carrito);
+    console.log("delete",carrito);
     localStorage.setItem('carrito', JSON.stringify(carrito))
     }
     else if(carrito.length==1){
+      setCarrito(0)
       localStorage.removeItem("carrito");
     navigate("/store");
     }
@@ -156,11 +159,14 @@ function Shopping() {
         </div>
         <div className="detail">
             {carrito.map((p) => (
-              <p>{p.price.unit_amount/100}€&nbsp;x&nbsp;{p.quantity}ud.</p>
+              <>
+              <p><strong>Subtotal:</strong>&nbsp;{p.price.unit_amount/100*p.quantity}€({p.price.unit_amount/100}€&nbsp;x&nbsp;{p.quantity}ud.)</p>
+              <p><strong>IVA:</strong>&nbsp;{(p.price.unit_amount/100*0.21).toFixed(2)}€</p>
+              </>
             ))}
         
             <hr></hr>
-            <h2>Total: {JSON.parse(localStorage.getItem('total'))}€</h2>
+            <h2>Total: {(JSON.parse(localStorage.getItem('total'))*1.21).toFixed(2)}€</h2>
             <button className="button-3" id="save-cont" onClick={continuar}>Guardar y continuar</button>
         </div>
         </div>

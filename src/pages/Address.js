@@ -5,10 +5,12 @@ import img1 from "../img/logo-blanco.png";
 import { useUserAuth } from "../context/userAuthContext";
 import { auth, db } from "../firebase-config";
 import { Footer } from "../components/Footer";
+import { useCarritoContext } from "../context/carritoContext";
+import  createCheckoutSession  from "../functions/createCheckoutSession";
 import { getFirestore, doc, getDoc, addDoc, setDoc, updateDoc, collection } from "firebase/firestore";
 
-function Shipping() {
-
+function Address() {
+  const { carrito, setCarrito } = useCarritoContext();
   const [cliente, setCliente] = useState({});
   const [name, setName] = useState("");
   const [primer, setPrimer] = useState("");
@@ -22,6 +24,13 @@ function Shipping() {
   const { user } = useUserAuth();
   const [isShown, setIsShown] = useState(false);
   let navigate = useNavigate();
+  useEffect(() => {
+
+      setCarrito(JSON.parse(localStorage.getItem('carrito')))
+      console.log("cesta", carrito);
+
+    
+  }, []);
 
   const register = async (e) => {
     e.preventDefault();
@@ -60,9 +69,7 @@ function Shipping() {
     // Toggle shown state
     setIsShown(current => !current);
   };
-  const continuar = (e) => {
-    navigate("/cart/shipping");
-  }
+
 
   return (
     <section className="shopping">
@@ -109,7 +116,16 @@ function Shipping() {
        
                 <div className="botones">
                   <button className="button-3" onClick={handleClick}> Modificar datos</button>
-                  <button className="button-3" onClick={continuar}>Guardar y continuar</button>
+                  <button className="button-3" id="checkout-button"
+                  onClick={() => {
+        
+                    createCheckoutSession(user.uid, carrito);
+                    const btn = document.getElementById("checkout-button");
+                    btn.isDisabled = true;
+                    btn.classList.add("cursor-not-allowed");
+                    btn.innerText = "Comprando...";
+                  }}
+                  >Pagar</button>
                 </div>
                 {isShown && (
                   <form onSubmit={register}>
@@ -197,5 +213,5 @@ function Shipping() {
   );
 };
 
-export default Shipping;
+export default Address;
 
